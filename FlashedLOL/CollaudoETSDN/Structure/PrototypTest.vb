@@ -7,21 +7,19 @@ Public Class PrototypTest
     Protected testCompleted As Boolean
     Protected nameOftest As String
     Protected viewError
-    Protected varTxEtsdn As New VarTxToETSDN
-    Protected canEtsdnVar As New CanCommunication
-    Protected tmrSlidePanel As Stopwatch
+    Protected varTx As New SendVar_to_PLC
+    Protected canVar As New CanCommunication
 
     Public Sub New()
         Me.tmrTest = New Stopwatch
-        Me.varTxEtsdn = New VarTxToETSDN
-        Me.canEtsdnVar = New CanCommunication
+        Me.varTx = New SendVar_to_PLC
+        Me.canVar = New CanCommunication
         Me.testSuccess = False
         Me.testCompleted = False
-        Me.tmrSlidePanel = New Stopwatch
     End Sub
 
 
-    Public Overridable Function Execute(gui As MainEtsdn) As TestResult
+    Public Overridable Function Execute(gui As Main) As TestResult
         Return Nothing
     End Function
 

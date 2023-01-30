@@ -31,6 +31,7 @@ Partial Class Main
         Me.LAccelerometro = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.LCalibrazione = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label12
@@ -109,11 +110,21 @@ Partial Class Main
         Me.LCalibrazione.Text = "Test completato"
         Me.LCalibrazione.Visible = False
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(0, 0)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 141
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(400, 236)
+        Me.ClientSize = New System.Drawing.Size(790, 289)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LCalibrazione)
         Me.Controls.Add(Me.Label23)
         Me.Controls.Add(Me.LAccelerometro)
@@ -138,4 +149,5 @@ Partial Class Main
     Friend WithEvents LAccelerometro As System.Windows.Forms.Label
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents LCalibrazione As System.Windows.Forms.Label
+    Friend WithEvents Button1 As Button
 End Class

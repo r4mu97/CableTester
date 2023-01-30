@@ -189,10 +189,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CAN.vb" />
-    <Compile Include="CollaudoETSDN\CanComunicaation\CanEtsdn.vb" />
+    <Compile Include="CollaudoETSDN\CanComunicaation\CanCommunication.vb" />
     <Compile Include="CollaudoETSDN\ErrorList\TestError.vb" />
     <Compile Include="CollaudoETSDN\MongoDB\MongoDBdata.vb" />
-    <Compile Include="CollaudoETSDN\Structure\CreateCSVfile.vb" />
+    <Compile Include="CollaudoETSDN\Structure\ReadFile.vb" />
     <Compile Include="CollaudoETSDN\Structure\PrototypTest.vb" />
     <Compile Include="CollaudoETSDN\Structure\TestExecutor.vb" />
     <Compile Include="CollaudoETSDN\TestResult\ManageGraphics\pBoxPower.vb">
@@ -208,21 +208,10 @@
     <Compile Include="CollaudoETSDN\TestResult\TestResultAnalog.vb" />
     <Compile Include="CollaudoETSDN\TestResult\TestResultInputs.vb" />
     <Compile Include="CollaudoETSDN\TestResult\TestResultRele.vb" />
-    <Compile Include="CollaudoETSDN\Tests\Test5VsEtsdn.vb" />
-    <Compile Include="CollaudoETSDN\Tests\TestAccEtsdn.vb" />
-    <Compile Include="CollaudoETSDN\Tests\TestAnalogEtsdn.vb" />
-    <Compile Include="CollaudoETSDN\Tests\TestInputsEtsdn.vb" />
-    <Compile Include="CollaudoETSDN\Tests\TestPower.vb" />
-    <Compile Include="CollaudoETSDN\Tests\TestReleEtsdn.vb" />
-    <Compile Include="CollaudoETSDN\CanComunicaation\VarRxFromETSDN.vb" />
-    <Compile Include="CollaudoETSDN\CanComunicaation\VarTxToETSDN.vb" />
+    <Compile Include="CollaudoETSDN\CanComunicaation\ReciveVar_form_PLC.vb" />
+    <Compile Include="CollaudoETSDN\CanComunicaation\SendVar_to_PLC.vb" />
     <Compile Include="CollaudoETSDN\TestResult\TestResultPower.vb" />
-    <Compile Include="CollaudoETSDN\CollaudoETSDN.Designer.vb">
-      <DependentUpon>CollaudoETSDN.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CollaudoETSDN\CollaudoETSDN.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="CollaudoETSDN\Tests\C002080.vb" />
     <Compile Include="FrmPeak.Designer.vb">
       <DependentUpon>FrmPeak.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -236,11 +225,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Res.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Res.resx</DependentUpon>
     </Compile>
     <Compile Include="UsbDevice.vb" />
     <Compile Include="Main.vb">
@@ -264,9 +248,6 @@
     <Compile Include="Point3D.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CollaudoETSDN\CollaudoETSDN.resx">
-      <DependentUpon>CollaudoETSDN.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmPeak.resx">
       <DependentUpon>FrmPeak.vb</DependentUpon>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -280,12 +261,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Res.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
-      <LastGenOutput>Res.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -332,9 +307,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

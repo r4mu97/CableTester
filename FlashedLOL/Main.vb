@@ -9,16 +9,16 @@ Public Class Main
 
     Dim can_var As New CanCommunication
     Dim varCan_Tx As New SendVar_to_PLC
+    Dim read As New ReadFile(Me)
 
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Do
-            can_var.InitCanOpen()
-        Loop While Not can_var.is_Inizialized()
+        'Do
+        '    can_var.InitCanOpen()
+        'Loop While Not can_var.is_Inizialized()
 
         can_var.SendCmdToAncor(varCan_Tx.MsgComposer(), 20)
-
 
     End Sub
 
@@ -36,5 +36,7 @@ Public Class Main
         ctrl.Text = text
     End Sub
 
-
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        read.Read_all_file()
+    End Sub
 End Class

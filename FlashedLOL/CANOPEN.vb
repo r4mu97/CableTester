@@ -670,7 +670,6 @@ Module CAN_OPEN
 
 
         Catch ex As Exception
-            AggiornaLog(ex)
         End Try
         Return ret
     End Function
@@ -711,7 +710,6 @@ Module CAN_OPEN
         Try
             PCANBasic.GetValue(PCANBasic.PCAN_NONEBUS, Peak.Can.Basic.TPCANParameter.PCAN_API_VERSION, strTemp, 255)
         Catch ex As Exception
-            AggiornaLog(ex)
             Return "MISSING"
         End Try
         Return strTemp.ToString()
@@ -734,7 +732,6 @@ Module CAN_OPEN
             End If
 
         Catch ex As Exception
-            AggiornaLog(ex)
         End Try
         Return False
     End Function
@@ -751,7 +748,6 @@ Module CAN_OPEN
             End If
 
         Catch ex As Exception
-            AggiornaLog(ex)
         End Try
         Return False
     End Function
@@ -761,7 +757,6 @@ Module CAN_OPEN
             PCANBasic.Uninitialize(currentChannel)
             PCANBasic.Initialize(currentChannel, currentBaudrate)
         Catch ex As Exception
-            AggiornaLog(ex)
         End Try
     End Sub
 
@@ -788,7 +783,6 @@ Module CAN_OPEN
 
             End Select
         Catch ex As Exception
-            AggiornaLog(ex)
         End Try
         Return "KO"
     End Function
@@ -822,7 +816,6 @@ Module CAN_OPEN
             Return ret.ToArray()
 
         Catch ex As Exception
-            AggiornaLog(ex)
         End Try
         Return New TPCANHandle() {}
     End Function

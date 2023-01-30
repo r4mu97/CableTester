@@ -1,5 +1,5 @@
 ﻿Public Class TestResultView
-    Inherits MainEtsdn
+    Inherits Main
 
     Protected test_loading As Boolean
     Protected test_passed As Boolean
