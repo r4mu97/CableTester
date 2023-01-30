@@ -1,2 +1,0 @@
-loadbin boot.hex,0x00000000
-exit

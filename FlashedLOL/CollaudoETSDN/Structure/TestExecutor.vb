@@ -3,7 +3,7 @@
 Public Class TestExecutor
 
     Dim varTxEtsdn As New VarTxToETSDN
-    Dim canEtsdnVar As New CanEtsdn
+    Dim canEtsdnVar As New CanCommunication
     Public Function Execute_test_suite(suite As TestSuite, gui As MainEtsdn)
         Dim nTestDone As Integer = 0
         'creo la lista dei risultati ogni volta che chiamo la fuznione(ogni volta che lancio il collaudo di un dispositivo)
@@ -12,7 +12,7 @@ Public Class TestExecutor
             'creo ciclo for per ogni test all'interno della lista che restituisce la funzione "GetTests"
             For Each test In suite.GeTests()
 
-                gui.ChangeControlText(gui.TestingSerial, VarRxFromETSDN.GetIntance.etsdnSN)
+                gui.ChangeControlText(gui.TestingSerial, ReciveVar_form_PLC.GetIntance.etsdnSN)
 
                 'creo la variabile che si prende in memoria ogni risultato del test 
                 'chiamo la funzione di esecuzione del test tramite l'assegnazione alla variabile che prende come ingresso il risultato del test 

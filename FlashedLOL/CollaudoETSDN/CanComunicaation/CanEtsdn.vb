@@ -1,4 +1,4 @@
-﻿Public Class CanEtsdn
+﻿Public Class CanCommunication
 
     Protected tmr As New Stopwatch
 
@@ -9,15 +9,15 @@
             'timer per la connessione CAN
             tmr.Start()
             'imposto un limite di 5s' per stabilire la connessione
-            If tmr.ElapsedMilliseconds < 5000 And Not VarRxFromETSDN.GetIntance.canOpenInizialized Then
+            If tmr.ElapsedMilliseconds < 5000 And Not ReciveVar_form_PLC.GetIntance.canOpenInizialized Then
 
                 Dim canChannels = getAvailableCanChannels()
-                VarRxFromETSDN.GetIntance.canOpenInizialized = False
+                ReciveVar_form_PLC.GetIntance.canOpenInizialized = False
 
                 If init_CANOPEN(canChannels(0), TPCANOPENBaudrate.PCANOPENBAUD_500K, False) Then
                     'resetto il timer 
                     tmr.Reset()
-                    VarRxFromETSDN.GetIntance.canOpenInizialized = True
+                    ReciveVar_form_PLC.GetIntance.canOpenInizialized = True
                 End If
             End If
         Catch ex As Exception
@@ -28,14 +28,14 @@
 
     '\\Sub per fornire all'esterno l'inizializzazione del CAN
     Public Function is_Inizialized()
-        Return VarRxFromETSDN.GetIntance.canOpenInizialized
+        Return ReciveVar_form_PLC.GetIntance.canOpenInizialized
     End Function
 
 
 
     Function SendCmdToAncor(bytesToSend As UShort, Optional timeoutmilliseconds As Integer = 50, Optional setAncor As UShort = 0)
 
-        If VarRxFromETSDN.GetIntance.canOpenInizialized Then
+        If ReciveVar_form_PLC.GetIntance.canOpenInizialized Then
 
             Dim canMsg As New TPCANOPENMsg()
 

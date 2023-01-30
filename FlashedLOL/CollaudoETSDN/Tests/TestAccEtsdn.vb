@@ -32,10 +32,10 @@ Public Class TestAccEtsdn
 
         Do
             'scannerizzo nuovi messaggi ricevuti dal can
-            VarRxFromETSDN.GetIntance.ScanParseMsg()
-            gui.ChangeControlText(gui.accZ, Math.Round(VarRxFromETSDN.GetIntance.axisZ, 3, MidpointRounding.AwayFromZero))
-            gui.ChangeControlText(gui.accY, Math.Round(VarRxFromETSDN.GetIntance.axisY, 3, MidpointRounding.AwayFromZero))
-            gui.ChangeControlText(gui.accX, Math.Round(VarRxFromETSDN.GetIntance.axisX, 3, MidpointRounding.AwayFromZero))
+            ReciveVar_form_PLC.GetIntance.ScanParseMsg()
+            gui.ChangeControlText(gui.accZ, Math.Round(ReciveVar_form_PLC.GetIntance.axisZ, 3, MidpointRounding.AwayFromZero))
+            gui.ChangeControlText(gui.accY, Math.Round(ReciveVar_form_PLC.GetIntance.axisY, 3, MidpointRounding.AwayFromZero))
+            gui.ChangeControlText(gui.accX, Math.Round(ReciveVar_form_PLC.GetIntance.axisX, 3, MidpointRounding.AwayFromZero))
             Select Case stepAcc
                 Case 0
                     'inizializzo una posizione zero del dispositivo 
@@ -45,9 +45,9 @@ Public Class TestAccEtsdn
 
                 Case 1
                     'controllo che il dispositivo sia nella poszione giusta 
-                    If (VarRxFromETSDN.GetIntance.axisZ > 1 - rAccTolerance And VarRxFromETSDN.GetIntance.axisZ < 1 + rAccTolerance) And
-                       (VarRxFromETSDN.GetIntance.axisY > -rAccTolerance And VarRxFromETSDN.GetIntance.axisY < rAccTolerance) And
-                       (VarRxFromETSDN.GetIntance.axisX > -rAccTolerance And VarRxFromETSDN.GetIntance.axisX < rAccTolerance) Then
+                    If (ReciveVar_form_PLC.GetIntance.axisZ > 1 - rAccTolerance And ReciveVar_form_PLC.GetIntance.axisZ < 1 + rAccTolerance) And
+                       (ReciveVar_form_PLC.GetIntance.axisY > -rAccTolerance And ReciveVar_form_PLC.GetIntance.axisY < rAccTolerance) And
+                       (ReciveVar_form_PLC.GetIntance.axisX > -rAccTolerance And ReciveVar_form_PLC.GetIntance.axisX < rAccTolerance) Then
                         stepAcc += 1
                     End If
 
@@ -58,9 +58,9 @@ Public Class TestAccEtsdn
                     stepAcc += 1
 
                 Case 3
-                    If (VarRxFromETSDN.GetIntance.axisY > -1 - rAccTolerance And VarRxFromETSDN.GetIntance.axisY < -1 + rAccTolerance) And
-                       (VarRxFromETSDN.GetIntance.axisZ > -rAccTolerance And VarRxFromETSDN.GetIntance.axisZ < rAccTolerance) And
-                       (VarRxFromETSDN.GetIntance.axisX > -rAccTolerance And VarRxFromETSDN.GetIntance.axisX < rAccTolerance) Then
+                    If (ReciveVar_form_PLC.GetIntance.axisY > -1 - rAccTolerance And ReciveVar_form_PLC.GetIntance.axisY < -1 + rAccTolerance) And
+                       (ReciveVar_form_PLC.GetIntance.axisZ > -rAccTolerance And ReciveVar_form_PLC.GetIntance.axisZ < rAccTolerance) And
+                       (ReciveVar_form_PLC.GetIntance.axisX > -rAccTolerance And ReciveVar_form_PLC.GetIntance.axisX < rAccTolerance) Then
                         stepAcc += 1
                     End If
 
@@ -91,7 +91,7 @@ Public Class TestAccEtsdn
         End If
 
         tmrTest.Reset()
-        Dim result As New TestResultAcc(testCompleted, testSuccess, nameOftest, viewError, VarRxFromETSDN.GetIntance.etsdnSN, gui.ckBox_Acc.Checked)
+        Dim result As New TestResultAcc(testCompleted, testSuccess, nameOftest, viewError, ReciveVar_form_PLC.GetIntance.etsdnSN, gui.ckBox_Acc.Checked)
         Return result
 
     End Function

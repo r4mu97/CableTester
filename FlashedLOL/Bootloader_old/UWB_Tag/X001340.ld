@@ -1,1 +1,0 @@
-﻿X001340~Anticollision TAG~EVALUATION SAMPLE V2~~~2019

@@ -28,11 +28,11 @@
 
         Do
             'scannerizzo nuovi messaggi ricevuti dal can 
-            VarRxFromETSDN.GetIntance.ScanParseMsg()
+            ReciveVar_form_PLC.GetIntance.ScanParseMsg()
             'aggiorno il valore del 5v sulla label nel form 
-            gui.ChangeControlText(gui.lbl5V, VarRxFromETSDN.GetIntance.plc5V / 10)
+            gui.ChangeControlText(gui.lbl5V, ReciveVar_form_PLC.GetIntance.plc5V / 10)
             'controllo con le soglie impostate 
-            If Not VarRxFromETSDN.GetIntance.plc5V > maximum_threshold And Not VarRxFromETSDN.GetIntance.plc5V < minimum_threshold Then
+            If Not ReciveVar_form_PLC.GetIntance.plc5V > maximum_threshold And Not ReciveVar_form_PLC.GetIntance.plc5V < minimum_threshold Then
                 '\\test passato
                 testCompleted = True
                 testSuccess = True
@@ -43,7 +43,7 @@
             Else
                 '\\test fallito 
                 'setto alla variabile viewError l'errore dedicato 
-                viewError = errorResult.GetError(7, VarRxFromETSDN.GetIntance.plc5V / 10)
+                viewError = errorResult.GetError(7, ReciveVar_form_PLC.GetIntance.plc5V / 10)
                 'report5V.SetResult5V(pass:=False, comment:=" Value of 5V must not be > 5,1 and < 4,9 ", value:=VarRxFromETSDN.GetIntance.plc5V.ToString / 10)
             End If
             canEtsdnVar.SendCmdToAncor(varTxEtsdn.MsgComposer(), 20)
@@ -54,7 +54,7 @@
             gui.StatoTest5V.Image = My.Resources.Res.error_FILL
         End If
         tmrTest.Reset()
-        Dim result As New TestResult5v(testCompleted, testSuccess, nameOftest, viewError, VarRxFromETSDN.GetIntance.etsdnSN, gui.ckBox_5v.Checked)
+        Dim result As New TestResult5v(testCompleted, testSuccess, nameOftest, viewError, ReciveVar_form_PLC.GetIntance.etsdnSN, gui.ckBox_5v.Checked)
         Return result
 
     End Function

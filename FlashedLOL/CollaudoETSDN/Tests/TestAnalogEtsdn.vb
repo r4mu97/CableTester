@@ -30,12 +30,12 @@
         tmrTest.Start()
         'timer durata test 
         Do
-            gui.ChangeControlText(gui.ANAVolt5, VarRxFromETSDN.GetIntance.rANA5 / 10 & "V")
-            gui.ChangeControlText(gui.ANAVolt10, VarRxFromETSDN.GetIntance.rSupplyANA10v / 10 & "V")
+            gui.ChangeControlText(gui.ANAVolt5, ReciveVar_form_PLC.GetIntance.rANA5 / 10 & "V")
+            gui.ChangeControlText(gui.ANAVolt10, ReciveVar_form_PLC.GetIntance.rSupplyANA10v / 10 & "V")
             'scannerrizzo se ci sono nuovi messaggi dal can 
-            VarRxFromETSDN.GetIntance.ScanParseMsg()
+            ReciveVar_form_PLC.GetIntance.ScanParseMsg()
             'controllo fail deve stare sotto la soglia impostata 
-            Dim gapAnalog5V = VarRxFromETSDN.GetIntance.rANA5 - VarRxFromETSDN.GetIntance.rSupplyANA5v
+            Dim gapAnalog5V = ReciveVar_form_PLC.GetIntance.rANA5 - ReciveVar_form_PLC.GetIntance.rSupplyANA5v
             If (cFailANA5 >= minimum_threshold_fail And cFailANA5 < maximum_threshold_fail) Then
                 resultAna5v = True
                 'aumento fail se il gap supera la soglia                 
@@ -49,10 +49,10 @@
                 End If
             Else
                 resultAna5v = False
-                viewError = errorResult.GetError(12, VarRxFromETSDN.GetIntance.rANA5)
+                viewError = errorResult.GetError(12, ReciveVar_form_PLC.GetIntance.rANA5)
             End If
 
-            Dim gapAnalog10V = VarRxFromETSDN.GetIntance.rANA10 - VarRxFromETSDN.GetIntance.rSupplyANA10v
+            Dim gapAnalog10V = ReciveVar_form_PLC.GetIntance.rANA10 - ReciveVar_form_PLC.GetIntance.rSupplyANA10v
             'controllo fail deve stare sotto la soglia impostata 
             If (cFailANA10 >= minimum_threshold_fail And cFailANA10 < maximum_threshold_fail) Then
                 resultAna10v = True
@@ -67,7 +67,7 @@
                 End If
             Else
                 resultAna10v = False
-                viewError = errorResult.GetError(13, VarRxFromETSDN.GetIntance.rSupplyANA10v)
+                viewError = errorResult.GetError(13, ReciveVar_form_PLC.GetIntance.rSupplyANA10v)
             End If
 
             If tmrTest.ElapsedMilliseconds >= 6000 Then
@@ -89,7 +89,7 @@
         varTxEtsdn.SetState10V(0)
         varTxEtsdn.SetState5V(0)
 
-        Dim result As New TestResultAnalog(testCompleted, testSuccess, resultAna5v, resultAna10v, nameOftest, viewError, VarRxFromETSDN.GetIntance.etsdnSN, gui.ckBox_Ana.Checked)
+        Dim result As New TestResultAnalog(testCompleted, testSuccess, resultAna5v, resultAna10v, nameOftest, viewError, ReciveVar_form_PLC.GetIntance.etsdnSN, gui.ckBox_Ana.Checked)
         Return result
 
     End Function

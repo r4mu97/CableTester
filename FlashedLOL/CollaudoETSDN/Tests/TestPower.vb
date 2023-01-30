@@ -21,15 +21,15 @@ Public Class TestPowerEtsdn
         Do
 
             'scannerrizo la ricezione di nuovi messaggi 
-            VarRxFromETSDN.GetIntance.ScanParseMsg()
-            gui.ChangeControlText(gui.lblPower, VarRxFromETSDN.GetIntance.rSupplyVoltageEtsdn / 10 & "V")
+            ReciveVar_form_PLC.GetIntance.ScanParseMsg()
+            gui.ChangeControlText(gui.lblPower, ReciveVar_form_PLC.GetIntance.rSupplyVoltageEtsdn / 10 & "V")
             'controllo
 
-            If (VarRxFromETSDN.GetIntance.plcPowerCurr < minimum_threshold_plc) Or (VarRxFromETSDN.GetIntance.plcPowerCurr > maximum_threshold_plc) Or
-                (VarRxFromETSDN.GetIntance.rSupplyVoltageEtsdn < VarRxFromETSDN.GetIntance.plcEcuK15 - 10) Or
-                (VarRxFromETSDN.GetIntance.rSupplyVoltageEtsdn > VarRxFromETSDN.GetIntance.plcEcuK15 + 10) Then
+            If (ReciveVar_form_PLC.GetIntance.plcPowerCurr < minimum_threshold_plc) Or (ReciveVar_form_PLC.GetIntance.plcPowerCurr > maximum_threshold_plc) Or
+                (ReciveVar_form_PLC.GetIntance.rSupplyVoltageEtsdn < ReciveVar_form_PLC.GetIntance.plcEcuK15 - 10) Or
+                (ReciveVar_form_PLC.GetIntance.rSupplyVoltageEtsdn > ReciveVar_form_PLC.GetIntance.plcEcuK15 + 10) Then
 
-                viewError = errorResult.GetError(0, VarRxFromETSDN.GetIntance.rSupplyVoltageEtsdn)
+                viewError = errorResult.GetError(0, ReciveVar_form_PLC.GetIntance.rSupplyVoltageEtsdn)
             Else
                 'test passato 
 
@@ -55,7 +55,7 @@ Public Class TestPowerEtsdn
         'resetto il timer del test 
         tmrTest.Reset()
         'creo l'oggetto del risultato del test passandogli il completamento e l'esito 
-        Dim result As New TestResultPower(testCompleted, testSuccess, nameOftest, viewError, VarRxFromETSDN.GetIntance.etsdnSN, gui.ckBox_Pwr.Checked)
+        Dim result As New TestResultPower(testCompleted, testSuccess, nameOftest, viewError, ReciveVar_form_PLC.GetIntance.etsdnSN, gui.ckBox_Pwr.Checked)
         'ritorno il valore che verrà gestito all'esterno
         Return result
 

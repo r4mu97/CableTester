@@ -1,1 +1,0 @@
-﻿X100740~Telecamera Kiwi-Eye~Depth-RGB realsense wide~~~2013

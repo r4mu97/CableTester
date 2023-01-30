@@ -1,1 +1,0 @@
-﻿XA00521D~ETS®~HMI CAN Touch display~12-24~250~2017

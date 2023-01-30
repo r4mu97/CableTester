@@ -1,1 +1,0 @@
-﻿XY00521~WYC~WiFi-CAN bus bridge~12-24~250~2013

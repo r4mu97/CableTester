@@ -24,10 +24,10 @@
         tmrTest.Start()
         Do
             'scannerizzo nuovi messaggi dal can 
-            VarRxFromETSDN.GetIntance.ScanParseMsg()
-            gui.ChangeControlText(gui.LabelRL2, VarRxFromETSDN.GetIntance.vCurrentRL2 / 10 & " Amps") '|
-            gui.ChangeControlText(gui.LabelRL3, VarRxFromETSDN.GetIntance.vCurrentRL3 / 10 & " Amps") '|-> aggiorno le label con il valore della corrente dei relè
-            gui.ChangeControlText(gui.LabelRL1, VarRxFromETSDN.GetIntance.vCurrentRL1 / 10 & " Amps") '|
+            ReciveVar_form_PLC.GetIntance.ScanParseMsg()
+            gui.ChangeControlText(gui.LabelRL2, ReciveVar_form_PLC.GetIntance.vCurrentRL2 / 10 & " Amps") '|
+            gui.ChangeControlText(gui.LabelRL3, ReciveVar_form_PLC.GetIntance.vCurrentRL3 / 10 & " Amps") '|-> aggiorno le label con il valore della corrente dei relè
+            gui.ChangeControlText(gui.LabelRL1, ReciveVar_form_PLC.GetIntance.vCurrentRL1 / 10 & " Amps") '|
 
             Select Case StepRele
            'step dove setto il timer, apro i rele e gli alimento
@@ -40,22 +40,22 @@
                     tmrRele.Restart()
                 Case 1
                     'primo controllo che tutti i rele siano aperti e che non ci sia corrente
-                    If Not VarRxFromETSDN.GetIntance.vCurrentRL1 > 10 And Not VarRxFromETSDN.GetIntance.vCurrentRL2 > 15 And Not VarRxFromETSDN.GetIntance.vCurrentRL3 > 10 Then
+                    If Not ReciveVar_form_PLC.GetIntance.vCurrentRL1 > 10 And Not ReciveVar_form_PLC.GetIntance.vCurrentRL2 > 15 And Not ReciveVar_form_PLC.GetIntance.vCurrentRL3 > 10 Then
                         StepRele += 1
                         'chiudo il primo rele
                         varTxEtsdn.SetStateRL1(1)
                     Else
-                        If VarRxFromETSDN.GetIntance.vCurrentRL1 > 10 Then
-                            viewError &= errorResult.GetError(1, VarRxFromETSDN.GetIntance.vCurrentRL1)
-                        ElseIf VarRxFromETSDN.GetIntance.vCurrentRL2 > 15 Then
-                            viewError &= errorResult.GetError(2, VarRxFromETSDN.GetIntance.vCurrentRL2)
-                        ElseIf VarRxFromETSDN.GetIntance.vCurrentRL3 > 10 Then
-                            viewError &= errorResult.GetError(3, VarRxFromETSDN.GetIntance.vCurrentRL3)
+                        If ReciveVar_form_PLC.GetIntance.vCurrentRL1 > 10 Then
+                            viewError &= errorResult.GetError(1, ReciveVar_form_PLC.GetIntance.vCurrentRL1)
+                        ElseIf ReciveVar_form_PLC.GetIntance.vCurrentRL2 > 15 Then
+                            viewError &= errorResult.GetError(2, ReciveVar_form_PLC.GetIntance.vCurrentRL2)
+                        ElseIf ReciveVar_form_PLC.GetIntance.vCurrentRL3 > 10 Then
+                            viewError &= errorResult.GetError(3, ReciveVar_form_PLC.GetIntance.vCurrentRL3)
                         End If
                     End If
                 Case 2
                     'controllo del primo rele che rimanga nei range della soglia impostata 
-                    If VarRxFromETSDN.GetIntance.vCurrentRL1 > minimum_threshold And VarRxFromETSDN.GetIntance.vCurrentRL1 < maximum_threshold Then 'da modificare in base alla resistenza 
+                    If ReciveVar_form_PLC.GetIntance.vCurrentRL1 > minimum_threshold And ReciveVar_form_PLC.GetIntance.vCurrentRL1 < maximum_threshold Then 'da modificare in base alla resistenza 
                         resultR1 = True
                         'apro il rele 1 
                         varTxEtsdn.SetStateRL1(0)
@@ -71,13 +71,13 @@
                         varTxEtsdn.SetStateRL2(1)
                         StepRele += 1
                         tmrRele.Restart()
-                        viewError &= errorResult.GetError(4, VarRxFromETSDN.GetIntance.vCurrentRL1)
-                        reportRl.SetResultRL1(pass:=False, value:=VarRxFromETSDN.GetIntance.vCurrentRL1, comment:="  (Must be > 450 and < 510)")
+                        viewError &= errorResult.GetError(4, ReciveVar_form_PLC.GetIntance.vCurrentRL1)
+                        reportRl.SetResultRL1(pass:=False, value:=ReciveVar_form_PLC.GetIntance.vCurrentRL1, comment:="  (Must be > 450 and < 510)")
                     End If
 
                 Case 3
                     'controllo del secondo rele che rimanga nei range della soglia impostata 
-                    If VarRxFromETSDN.GetIntance.vCurrentRL2 > minimum_threshold And VarRxFromETSDN.GetIntance.vCurrentRL2 < maximum_threshold Then
+                    If ReciveVar_form_PLC.GetIntance.vCurrentRL2 > minimum_threshold And ReciveVar_form_PLC.GetIntance.vCurrentRL2 < maximum_threshold Then
                         resultR2 = True
                         'apro rele 2
                         varTxEtsdn.SetStateRL2(0)
@@ -95,13 +95,13 @@
                         varTxEtsdn.SetStateRL3(1)
                         StepRele += 1
                         tmrRele.Restart()
-                        viewError &= errorResult.GetError(5, VarRxFromETSDN.GetIntance.vCurrentRL2)
-                        reportRl.SetResultRL2(pass:=False, value:=VarRxFromETSDN.GetIntance.vCurrentRL2, comment:="  (Must be > 450 and < 510)")
+                        viewError &= errorResult.GetError(5, ReciveVar_form_PLC.GetIntance.vCurrentRL2)
+                        reportRl.SetResultRL2(pass:=False, value:=ReciveVar_form_PLC.GetIntance.vCurrentRL2, comment:="  (Must be > 450 and < 510)")
                     End If
 
                 Case 4
                     'controlo del terzo rele che rimanga nei range della soglia impostata  
-                    If VarRxFromETSDN.GetIntance.vCurrentRL3 > minimum_threshold And VarRxFromETSDN.GetIntance.vCurrentRL3 < maximum_threshold Then
+                    If ReciveVar_form_PLC.GetIntance.vCurrentRL3 > minimum_threshold And ReciveVar_form_PLC.GetIntance.vCurrentRL3 < maximum_threshold Then
                         resultR3 = True
                         'apro rele3 
                         varTxEtsdn.SetStateRL3(0)
@@ -114,8 +114,8 @@
                         varTxEtsdn.SetStateRL3(0)
                         StepRele += 1
                         tmrRele.Restart()
-                        viewError &= errorResult.GetError(6, VarRxFromETSDN.GetIntance.vCurrentRL3)
-                        reportRl.SetResultRL3(pass:=False, value:=VarRxFromETSDN.GetIntance.vCurrentRL3, comment:="  (Must be > 450 and < 510)")
+                        viewError &= errorResult.GetError(6, ReciveVar_form_PLC.GetIntance.vCurrentRL3)
+                        reportRl.SetResultRL3(pass:=False, value:=ReciveVar_form_PLC.GetIntance.vCurrentRL3, comment:="  (Must be > 450 and < 510)")
                     End If
 
                 Case 5
@@ -149,7 +149,7 @@
         'resetto il timer del test 
         tmrTest.Reset()
         'creo l'oggetto del risultato del test passandogli il completamento e l'esito 
-        Dim result As New TestResultRele(testCompleted, testSuccess, resultR1, resultR2, resultR3, nameOftest, viewError, VarRxFromETSDN.GetIntance.etsdnSN, gui.ckBox_Rele.Checked)
+        Dim result As New TestResultRele(testCompleted, testSuccess, resultR1, resultR2, resultR3, nameOftest, viewError, ReciveVar_form_PLC.GetIntance.etsdnSN, gui.ckBox_Rele.Checked)
         'ritorno il valore che verrà gestito all'esterno
         Return result
 

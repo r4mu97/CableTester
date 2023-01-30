@@ -1,1 +1,0 @@
-﻿X000421EC~X19®~Antenne esterne e cavo~8-48~150~2012

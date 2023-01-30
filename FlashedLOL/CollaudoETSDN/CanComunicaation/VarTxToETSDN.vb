@@ -1,4 +1,4 @@
-﻿Public Class VarTxToETSDN
+﻿Public Class SendVar_to_PLC
     Dim setRL1, setRL2, setRL3, setAllRl, setSupplyRl1, setSupplyRl2, setSupplyRl3, setIP1, setIP2, setIN1, setIN2, set10V, Set5V As Byte
 
 

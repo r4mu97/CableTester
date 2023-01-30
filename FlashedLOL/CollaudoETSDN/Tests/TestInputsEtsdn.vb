@@ -29,7 +29,7 @@
         'loop controllo
         Do
             'scannerizzo nuovi messaggi sul can 
-            VarRxFromETSDN.GetIntance.ScanParseMsg()
+            ReciveVar_form_PLC.GetIntance.ScanParseMsg()
             Select Case stepIP
                 Case 0
                     varTxEtsdn.SetStateIP1(1)
@@ -37,8 +37,8 @@
                     stepIP += 1
                 Case 1
                     'controllo IP1
-                    If VarRxFromETSDN.GetIntance.xStatoIP1 = 1 And VarRxFromETSDN.GetIntance.xStatoIP2 = 0 And
-                       VarRxFromETSDN.GetIntance.xStatoIN1 = 0 And VarRxFromETSDN.GetIntance.xStatoIN2 = 0 Then
+                    If ReciveVar_form_PLC.GetIntance.xStatoIP1 = 1 And ReciveVar_form_PLC.GetIntance.xStatoIP2 = 0 And
+                       ReciveVar_form_PLC.GetIntance.xStatoIN1 = 0 And ReciveVar_form_PLC.GetIntance.xStatoIN2 = 0 Then
                         stepIP += 1
                         resultIP1 = True
                         tmrtestIp.Restart()
@@ -52,13 +52,13 @@
                         varTxEtsdn.SetStateIP2(1)
                         varTxEtsdn.SetStateIP1(0)
                         gui.pBox_IP1.Image = My.Resources.Res.error_FILL
-                        viewError &= errorResult.GetError(8, VarRxFromETSDN.GetIntance.xStatoIP1, VarRxFromETSDN.GetIntance.xStatoIP2,
-                                                             VarRxFromETSDN.GetIntance.xStatoIN1, VarRxFromETSDN.GetIntance.xStatoIN2)
+                        viewError &= errorResult.GetError(8, ReciveVar_form_PLC.GetIntance.xStatoIP1, ReciveVar_form_PLC.GetIntance.xStatoIP2,
+                                                             ReciveVar_form_PLC.GetIntance.xStatoIN1, ReciveVar_form_PLC.GetIntance.xStatoIN2)
                     End If
                 Case 2
                     'controllo IP2
-                    If VarRxFromETSDN.GetIntance.xStatoIP2 = 1 And VarRxFromETSDN.GetIntance.xStatoIP1 = 0 And
-                        VarRxFromETSDN.GetIntance.xStatoIN1 = 0 And VarRxFromETSDN.GetIntance.xStatoIN2 = 0 Then
+                    If ReciveVar_form_PLC.GetIntance.xStatoIP2 = 1 And ReciveVar_form_PLC.GetIntance.xStatoIP1 = 0 And
+                        ReciveVar_form_PLC.GetIntance.xStatoIN1 = 0 And ReciveVar_form_PLC.GetIntance.xStatoIN2 = 0 Then
                         stepIP += 1
                         resultIP2 = True
                         tmrtestIp.Restart()
@@ -72,13 +72,13 @@
                         varTxEtsdn.SetStateIN1(1)
                         varTxEtsdn.SetStateIP2(0)
                         gui.pBox_IP2.Image = My.Resources.Res.error_FILL
-                        viewError &= errorResult.GetError(9, VarRxFromETSDN.GetIntance.xStatoIP2, VarRxFromETSDN.GetIntance.xStatoIP1,
-                                                            VarRxFromETSDN.GetIntance.xStatoIN1, VarRxFromETSDN.GetIntance.xStatoIN2)
+                        viewError &= errorResult.GetError(9, ReciveVar_form_PLC.GetIntance.xStatoIP2, ReciveVar_form_PLC.GetIntance.xStatoIP1,
+                                                            ReciveVar_form_PLC.GetIntance.xStatoIN1, ReciveVar_form_PLC.GetIntance.xStatoIN2)
                     End If
                 Case 3
                     'controllo IN1
-                    If VarRxFromETSDN.GetIntance.xStatoIN1 = 1 And VarRxFromETSDN.GetIntance.xStatoIP1 = 0 And
-                        VarRxFromETSDN.GetIntance.xStatoIP2 = 0 And VarRxFromETSDN.GetIntance.xStatoIN2 = 0 Then
+                    If ReciveVar_form_PLC.GetIntance.xStatoIN1 = 1 And ReciveVar_form_PLC.GetIntance.xStatoIP1 = 0 And
+                        ReciveVar_form_PLC.GetIntance.xStatoIP2 = 0 And ReciveVar_form_PLC.GetIntance.xStatoIN2 = 0 Then
                         stepIP += 1
                         resultIN1 = True
                         tmrtestIp.Restart()
@@ -92,13 +92,13 @@
                         varTxEtsdn.SetStateIN2(1)
                         varTxEtsdn.SetStateIN1(0)
                         gui.pBox_IN1.Image = My.Resources.Res.error_FILL
-                        viewError &= errorResult.GetError(10, VarRxFromETSDN.GetIntance.xStatoIN1, VarRxFromETSDN.GetIntance.xStatoIP1,
-                                                              VarRxFromETSDN.GetIntance.xStatoIP2, VarRxFromETSDN.GetIntance.xStatoIN2)
+                        viewError &= errorResult.GetError(10, ReciveVar_form_PLC.GetIntance.xStatoIN1, ReciveVar_form_PLC.GetIntance.xStatoIP1,
+                                                              ReciveVar_form_PLC.GetIntance.xStatoIP2, ReciveVar_form_PLC.GetIntance.xStatoIN2)
                     End If
                 Case 4
                     'controllo IN2
-                    If VarRxFromETSDN.GetIntance.xStatoIN2 = 1 And VarRxFromETSDN.GetIntance.xStatoIP1 = 0 And
-                        VarRxFromETSDN.GetIntance.xStatoIP2 = 0 And VarRxFromETSDN.GetIntance.xStatoIN1 = 0 Then
+                    If ReciveVar_form_PLC.GetIntance.xStatoIN2 = 1 And ReciveVar_form_PLC.GetIntance.xStatoIP1 = 0 And
+                        ReciveVar_form_PLC.GetIntance.xStatoIP2 = 0 And ReciveVar_form_PLC.GetIntance.xStatoIN1 = 0 Then
                         stepIP += 1
                         resultIN2 = True
                         tmrtestIp.Restart()
@@ -110,8 +110,8 @@
                         tmrtestIp.Restart()
                         varTxEtsdn.SetStateIN2(0)
                         gui.pBox_IN2.Image = My.Resources.Res.error_FILL
-                        viewError &= errorResult.GetError(11, VarRxFromETSDN.GetIntance.xStatoIN2, VarRxFromETSDN.GetIntance.xStatoIP1,
-                                                             VarRxFromETSDN.GetIntance.xStatoIP2, VarRxFromETSDN.GetIntance.xStatoIN1)
+                        viewError &= errorResult.GetError(11, ReciveVar_form_PLC.GetIntance.xStatoIN2, ReciveVar_form_PLC.GetIntance.xStatoIP1,
+                                                             ReciveVar_form_PLC.GetIntance.xStatoIP2, ReciveVar_form_PLC.GetIntance.xStatoIN1)
                     End If
                 Case 5
                     'controllo che tutti gli  inputs siano andati a buon fine
@@ -138,7 +138,7 @@
             'gui.ChangeControlLocation(gui.StatoTestIngressi, 0, 42)
         End If
         tmrTest.Reset()
-        Dim result As New TestResultInputs(testCompleted, testSuccess, resultIP1, resultIP2, resultIN1, resultIN2, nameOftest, viewError, VarRxFromETSDN.GetIntance.etsdnSN, gui.ckBox_IP.Checked)
+        Dim result As New TestResultInputs(testCompleted, testSuccess, resultIP1, resultIP2, resultIN1, resultIN2, nameOftest, viewError, ReciveVar_form_PLC.GetIntance.etsdnSN, gui.ckBox_IP.Checked)
         Return result
 
     End Function

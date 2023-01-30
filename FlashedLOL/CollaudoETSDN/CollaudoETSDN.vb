@@ -22,7 +22,7 @@ Public Class MainEtsdn
 
     Private thread As Thread
     Private AnimatedImage As Image
-    Dim canEtsdnVar As New CanEtsdn
+    Dim canEtsdnVar As New CanCommunication
     Dim varTxEtsdn As New VarTxToETSDN
     Dim resultTest As New ResultTestDoneETSDN
     Dim statoCollaudo As New StatoTestCollaudo
@@ -607,9 +607,9 @@ Public Class MainEtsdn
     End Sub
 
     Private Sub BtnErrorView_Click(sender As Object, e As EventArgs)
-        Dim readFile As TextReader = New StreamReader(Application.StartupPath + "\\Log\\Etsdn\\LogPDF\\" + VarRxFromETSDN.GetIntance.etsdnSN + ".pdf")
+        Dim readFile As TextReader = New StreamReader(Application.StartupPath + "\\Log\\Etsdn\\LogPDF\\" + ReciveVar_form_PLC.GetIntance.etsdnSN + ".pdf")
         readFile.Close()
-        Process.Start(Application.StartupPath + "\\Log\\Etsdn\\LogPDF\\" + VarRxFromETSDN.GetIntance.etsdnSN + ".pdf")
+        Process.Start(Application.StartupPath + "\\Log\\Etsdn\\LogPDF\\" + ReciveVar_form_PLC.GetIntance.etsdnSN + ".pdf")
     End Sub
 
     Private Sub ckBox_Tutti_CheckedChanged(sender As Object, e As EventArgs) Handles ckBox_Tutti.Click

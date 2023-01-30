@@ -1,1 +1,0 @@
-﻿X000030~Kiwi-Eye~Centralina AI - Model A~14~140~2013

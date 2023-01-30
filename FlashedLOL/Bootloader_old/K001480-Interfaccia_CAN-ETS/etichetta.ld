@@ -1,1 +1,0 @@
-﻿K001480~~Interfaccia CAN per ETS~5-24~~2019

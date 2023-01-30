@@ -1,6 +1,6 @@
 ﻿Imports FlashedLOL.Peak.Can.Basic
 
-Public Class VarRxFromETSDN
+Public Class ReciveVar_form_PLC
     Public vTensione As Single
     Public xStatoRL1, xStatoRL2, xStatoRL3 As Boolean
     Public xStatoIP1, xStatoIP2, xStatoIN1, xStatoIN2 As Single
@@ -16,7 +16,6 @@ Public Class VarRxFromETSDN
     Public canOpenInizialized As Boolean
     Public timerComunicationCan As New Stopwatch
     Public oldpos1, oldpos2, oldpos3 As UInt32
-    Dim triangle As New Form2
     Public stOperation As Boolean
     Public tmr1, tmr2, tmr3 As New Stopwatch
     Public cycleTm1, cycleTm2, cycleTm3
@@ -24,10 +23,10 @@ Public Class VarRxFromETSDN
     Private Sub New()
     End Sub
 
-    Public Shared ReadOnly Property GetIntance As VarRxFromETSDN
+    Public Shared ReadOnly Property GetIntance As ReciveVar_form_PLC
 
         Get
-            Static varETSDN As New VarRxFromETSDN
+            Static varETSDN As New ReciveVar_form_PLC
             Return varETSDN
 
         End Get
