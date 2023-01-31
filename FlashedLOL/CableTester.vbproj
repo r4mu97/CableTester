@@ -290,9 +290,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlahedLOLUpdater\FlahedLOLUpdater.csproj">
+    <ProjectReference Include="..\FlahedLOLUpdater\CableTesterUpdater.csproj">
       <Project>{19dd92a8-4c0a-4003-96b7-237de14dc3b3}</Project>
-      <Name>FlahedLOLUpdater</Name>
+      <Name>CableTesterUpdater</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
