@@ -25,7 +25,9 @@ Public Class Main
     Private Sub cbox_list_cables_DropDown(sender As Object, e As EventArgs) Handles cbox_list_cables.DropDown
         find.Find_Files(Me)
     End Sub
-
+    Private Sub cbox_list_cables_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbox_list_cables.SelectedIndexChanged
+        read.Read_all_file(cbox_list_cables.SelectedItem)
+    End Sub
 
     Private Delegate Sub ChangeControlTextDelegate(ByVal ctrl As Control, ByVal text As String)
     Public Sub ChangeControlText(ByVal ctrl As Control, ByVal text As String)

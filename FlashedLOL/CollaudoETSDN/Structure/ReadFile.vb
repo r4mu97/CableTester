@@ -1,8 +1,10 @@
 ﻿
 Imports Microsoft.VisualBasic.FileIO
+Imports MongoDB.Driver
 Imports System.IO
 Public Class ReadFile
-    Dim myFileLines As List(Of String) = IO.File.ReadAllLines("C:\SW\_Progetti\CableTester\newFile.txt").ToList
+
+    Dim path As String = Application.StartupPath + "\CablesList\"
     'Dim FILE_NAME As String = "C:\SW\_Progetti\CableTester\newFile.txt"
     'Dim lines = File.ReadAllLines(FILE_NAME)
     'Dim numbers(lines.Length - 1) As Single
@@ -11,9 +13,9 @@ Public Class ReadFile
         'generateData = IO.File.AppendText(path)
     End Sub
 
-    Public Function Read_all_file()
+    Public Function Read_all_file(name_of_file As String)
 
-
+        Dim myFileLines As List(Of String) = IO.File.ReadAllLines(path + name_of_file).ToList
         Dim value As String
 
         For Each strLineOfTheFile As String In myFileLines
