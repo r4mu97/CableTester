@@ -33,7 +33,7 @@
 
 
 
-    Function SendCmdToAncor(bytesToSend As UShort, Optional timeoutmilliseconds As Integer = 50, Optional setAncor As UShort = 0)
+    Function SendCmdToPLC(bytesToSend As UShort, Optional timeoutmilliseconds As Integer = 50, Optional setAncor As UShort = 0)
 
         If ReciveVar_form_PLC.GetIntance.canOpenInizialized Then
 
