@@ -9,8 +9,8 @@ Public Class Main
 
     Dim can_var As New CanCommunication
     Dim varCan_Tx As New SendVar_to_PLC
-    Dim read As New ReadFile(Me)
-
+    Dim read As New ReadFile()
+    Dim find As New FindFiles()
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -18,9 +18,14 @@ Public Class Main
         '    can_var.InitCanOpen()
         'Loop While Not can_var.is_Inizialized()
 
-        can_var.SendCmdToAncor(varCan_Tx.MsgComposer(), 20)
+        'can_var.SendCmdToAncor(varCan_Tx.MsgComposer(), 20)
 
     End Sub
+
+    Private Sub cbox_list_cables_DropDown(sender As Object, e As EventArgs) Handles cbox_list_cables.DropDown
+        find.Find_Files(Me)
+    End Sub
+
 
     Private Delegate Sub ChangeControlTextDelegate(ByVal ctrl As Control, ByVal text As String)
     Public Sub ChangeControlText(ByVal ctrl As Control, ByVal text As String)
@@ -37,6 +42,8 @@ Public Class Main
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        read.Read_all_file()
+
     End Sub
+
+
 End Class
