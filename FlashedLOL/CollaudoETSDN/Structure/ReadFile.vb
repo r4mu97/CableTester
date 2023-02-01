@@ -7,7 +7,7 @@ Public Class ReadFile
     'Dim lines = File.ReadAllLines(FILE_NAME)
     'Dim numbers(lines.Length - 1) As Single
     'Dim index As Integer
-    Public Sub New(gui As Main)
+    Public Sub New()
         'generateData = IO.File.AppendText(path)
     End Sub
 
