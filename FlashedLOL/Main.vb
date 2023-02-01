@@ -13,10 +13,11 @@ Public Class Main
     Dim find As New FindFiles()
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-        'Do
-        '    can_var.InitCanOpen()
-        'Loop While Not can_var.is_Inizialized()
+        InitializeBasicComponents()
+        unInit_CANOPEN()
+        Do
+            can_var.InitCanOpen()
+        Loop While Not can_var.is_Inizialized()
 
         'can_var.SendCmdToAncor(varCan_Tx.MsgComposer(), 20)
 
