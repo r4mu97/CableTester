@@ -32,6 +32,7 @@ Partial Class Main
         Me.Label23 = New System.Windows.Forms.Label()
         Me.LCalibrazione = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.cbox_list_cables = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'Label12
@@ -119,11 +120,20 @@ Partial Class Main
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'cbox_list_cables
+        '
+        Me.cbox_list_cables.FormattingEnabled = True
+        Me.cbox_list_cables.Location = New System.Drawing.Point(81, 2)
+        Me.cbox_list_cables.Name = "cbox_list_cables"
+        Me.cbox_list_cables.Size = New System.Drawing.Size(121, 21)
+        Me.cbox_list_cables.TabIndex = 142
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(790, 289)
+        Me.Controls.Add(Me.cbox_list_cables)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LCalibrazione)
         Me.Controls.Add(Me.Label23)
@@ -150,4 +160,5 @@ Partial Class Main
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents LCalibrazione As System.Windows.Forms.Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents cbox_list_cables As ComboBox
 End Class
