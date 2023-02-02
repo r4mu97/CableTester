@@ -10,8 +10,6 @@ Public Class ReciveVar_form_PLC
     Public vCurrentRL1, vCurrentRL2, vCurrentRL3 As Single
     Public rSupplyVoltageEtsdn As UInteger
     Public MsgCanPLC As Single
-    Public etsdnOnline As Boolean
-    Public etsdnSN As String = ""
     Public pos1, pos2, pos3 As UInt32
     Public canOpenInizialized As Boolean
     Public timerComunicationCan As New Stopwatch
@@ -33,10 +31,6 @@ Public Class ReciveVar_form_PLC
     End Property
 
     Public Sub ParsingMSG(ID, Data)
-
-        Static Dim etsdnSN01 As String
-        Static Dim etsdnSN02 As String
-        Static Dim etsdnSN03 As String
         timerComunicationCan.Start()
         Try
 

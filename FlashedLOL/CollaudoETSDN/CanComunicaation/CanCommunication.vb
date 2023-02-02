@@ -26,7 +26,7 @@
 
     End Function
 
-    '\\Sub per fornire all'esterno l'inizializzazione del CAN
+    '\\Function per fornire all'esterno l'inizializzazione del CAN
     Public Function is_Inizialized()
         Return ReciveVar_form_PLC.GetIntance.canOpenInizialized
     End Function
@@ -48,13 +48,6 @@
             canMsg.DATA(2) = Convert.ToByte(bytesToSend >> 8)
             sendCANMessage(canMsg)
 
-
-            canMsg.ID = &H0
-            canMsg.LEN = 2
-            canMsg.DATA = New Byte() {0, 0, 0, 0, 0, 0, 0, 0}
-
-            canMsg.DATA(0) = setAncor
-            sendCANMessage(canMsg)
         End If
 
 
