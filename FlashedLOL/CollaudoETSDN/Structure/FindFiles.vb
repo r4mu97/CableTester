@@ -13,12 +13,10 @@ Public Class FindFiles
         Dim directory As String = "C:\SW\_Progetti\CableTester\FlashedLOL\CablesList"
         Dim cables_list As String() = System.IO.Directory.GetFiles(directory, "*")
 
+        gui.cbox_list_cables.Items.Clear()
+
         For Each file_code As String In cables_list
             gui.cbox_list_cables.Items.Add(System.IO.Path.GetFileName(file_code))
         Next
     End Function
-
-
-
-
 End Class
