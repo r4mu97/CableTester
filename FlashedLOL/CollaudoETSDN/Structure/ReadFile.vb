@@ -16,13 +16,14 @@ Public Class ReadFile
         Dim myFileLines As List(Of String) = File.ReadAllLines(directory_of_codeCable + code_cable_file).ToList
         Dim lines As String() = IO.File.ReadAllLines(directory_of_codeCable + code_cable_file)
         Dim list_of_data As New List(Of String())
-        Dim list_of_array = New Byte() {0, 0, 0, 0, 0, 0, 0}
+
         If Not lines Is Nothing Then
             For Each line In lines
                 list_of_data.Add(line.Split(" "c))
             Next
         End If
 
+        Return list_of_data
     End Function
 
 End Class
