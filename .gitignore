@@ -7,6 +7,13 @@ errorlog.txt
 *.exe.manifest
 *.ldb
 
+ECU/ATACOMxxxxx_3.0.0-AllUsers.opt
+ECU/ATACOMxxxxx_3.0.0-ricca-DELL_RICCARDO.opt
+ECU/ATACOMxxxxx_3.0.0.Device.Application.8551a325-a602-4008-8e76-d3a8b9556c30.bootinfo
+ECU/ATACOMxxxxx_3.0.0.Device.Application.8551a325-a602-4008-8e76-d3a8b9556c30.bootinfo_guids
+ECU/ATACOMxxxxx_3.0.0.Device.Application.8551a325-a602-4008-8e76-d3a8b9556c30.compileinfo
+ECU/ATACOMxxxxx_3.0.0.project.~u
+
 packages/
 FlashedLOL/Bootloader/KiwiCall - Pulsante/.DEFAULT.ets.swo
 FlashedLOL/Bootloader/KiwiCall - Pulsante/.DEFAULT.ets.swp
