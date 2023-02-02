@@ -27,7 +27,7 @@ Public Class Main
         find.Find_Files(Me)
     End Sub
     Private Sub cbox_list_cables_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbox_list_cables.SelectedIndexChanged
-        read.Read_all_file(cbox_list_cables.SelectedItem)
+        read.Read_configCable_file(cbox_list_cables.SelectedItem)
     End Sub
 
     Private Delegate Sub ChangeControlTextDelegate(ByVal ctrl As Control, ByVal text As String)
