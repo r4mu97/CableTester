@@ -9,13 +9,13 @@ Public Class FindFiles
     End Sub
 
     Public Function Find_Files(gui As Main)
-        Dim files() As String = IO.Directory.GetFiles(Application.StartupPath + "\CablesList")
 
-        gui.cbox_list_cables.Items.Clear()
-        For Each file As String In files
-            gui.cbox_list_cables.Items.Add(file.Substring(60))
+        Dim directory As String = "C:\SW\_Progetti\CableTester\FlashedLOL\CablesList"
+        Dim cables_list As String() = System.IO.Directory.GetFiles(directory, "*")
+
+        For Each file_code As String In cables_list
+            gui.cbox_list_cables.Items.Add(System.IO.Path.GetFileName(file_code))
         Next
-
     End Function
 
 
