@@ -12,7 +12,7 @@ Public Class ReadFile
     End Sub
 
     Public Function Read_configCable_file(code_cable_file As String)
-
+        code_cable_file = code_cable_file + ".txt"
         Dim myFileLines As List(Of String) = File.ReadAllLines(directory_of_codeCable + code_cable_file).ToList
         Dim lines As String() = IO.File.ReadAllLines(directory_of_codeCable + code_cable_file)
         Dim list_of_data As New List(Of String())
