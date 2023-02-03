@@ -1,22 +1,11 @@
 ﻿Imports FlashedLOL.Peak.Can.Basic
 
 Public Class ReciveVar_form_PLC
-    Public vTensione As Single
-    Public xStatoRL1, xStatoRL2, xStatoRL3 As Boolean
-    Public xStatoIP1, xStatoIP2, xStatoIN1, xStatoIN2 As Single
-    Public rANA5, rANA10, r5V, rSupplyANA10v, rSupplyANA5v As Single
-    Public axisX, axisY, axisZ As Single
-    Public plcEcuK15, plcPowerCurr, plc5V As Double
-    Public vCurrentRL1, vCurrentRL2, vCurrentRL3 As Single
-    Public rSupplyVoltageEtsdn As UInteger
-    Public MsgCanPLC As Single
-    Public pos1, pos2, pos3 As UInt32
+
     Public canOpenInizialized As Boolean
     Public timerComunicationCan As New Stopwatch
-    Public oldpos1, oldpos2, oldpos3 As UInt32
-    Public stOperation As Boolean
-    Public tmr1, tmr2, tmr3 As New Stopwatch
-    Public cycleTm1, cycleTm2, cycleTm3
+    Public input1, input2, input3, input4, input5, input6, input7, input8, input9, input10,
+           input11, input12, input13, input14, input15, input16, input17, input18, input19, input20 As Single
 
     Private Sub New()
     End Sub
@@ -37,43 +26,32 @@ Public Class ReciveVar_form_PLC
 
             Select Case (ID)
 
-                Case &H381
-                    Dim tagID
-                    tagID = Convert.ToUInt32(Data(0)) + (Convert.ToUInt32(Data(1)) << 8) + (Convert.ToUInt32(Data(2)) << 16) + (Convert.ToUInt32(Data(3)) << 24)
+                Case &H100
 
-                    If tagID = &H48C20833 Then
-                        pos1 = Convert.ToUInt32(Data(4)) + (Convert.ToUInt32(Data(5)) << 8) + (Convert.ToUInt32(Data(6)) << 16) + (Convert.ToUInt32(Data(7)) << 24)
-                        If pos1 <> oldpos1 Then
-                            oldpos1 = pos1
-                            Console.WriteLine("pos1=" & pos1)
-                        End If
-                        cycleTm1 = GetCurrentMillis()
-                    End If
-                Case &H382
-                    Dim tagID
-                    tagID = Convert.ToUInt32(Data(0)) + (Convert.ToUInt32(Data(1)) << 8) + (Convert.ToUInt32(Data(2)) << 16) + (Convert.ToUInt32(Data(3)) << 24)
-                    If tagID = &H48C20833 Then
-                        pos2 = Convert.ToUInt32(Data(4)) + (Convert.ToUInt32(Data(5)) << 8) + (Convert.ToUInt32(Data(6)) << 16) + (Convert.ToUInt32(Data(7)) << 24)
-                        If pos2 <> oldpos2 Then
-                            oldpos2 = pos2
-                            Console.WriteLine("pos2=" & pos2)
-                        End If
-                        cycleTm2 = GetCurrentMillis()
-                    End If
-                Case &H383
-                    Dim tagID
-                    tagID = Convert.ToUInt32(Data(0)) + (Convert.ToUInt32(Data(1)) << 8) + (Convert.ToUInt32(Data(2)) << 16) + (Convert.ToUInt32(Data(3)) << 24)
-                    If tagID = &H48C20833 Then
-                        pos3 = Convert.ToUInt32(Data(4)) + (Convert.ToUInt32(Data(5)) << 8) + (Convert.ToUInt32(Data(6)) << 16) + (Convert.ToUInt32(Data(7)) << 24)
-                        If pos3 <> oldpos3 Then
-                            oldpos3 = pos3
-                            Console.WriteLine("pos3=" & pos3)
-                        End If
-                        cycleTm3 = GetCurrentMillis()
-                    End If
-                    Console.WriteLine(cycleTm3)
+                    input1 = (Data(0) >> 0) And &B1
+                    input2 = (Data(0) >> 1) And &B1
+                    input3 = (Data(0) >> 2) And &B1
+                    input4 = (Data(0) >> 3) And &B1
+                    input5 = (Data(0) >> 4) And &B1
+                    input6 = (Data(0) >> 5) And &B1
+                    input7 = (Data(0) >> 6) And &B1
+                    input8 = (Data(0) >> 7) And &B1
+
+                    input9 = (Data(1) >> 0) And &B1
+                    input10 = (Data(1) >> 1) And &B1
+                    input11 = (Data(1) >> 2) And &B1
+                    input12 = (Data(1) >> 3) And &B1
+                    input13 = (Data(1) >> 4) And &B1
+                    input14 = (Data(1) >> 5) And &B1
+                    input15 = (Data(1) >> 6) And &B1
+                    input16 = (Data(1) >> 7) And &B1
+
+                    input17 = (Data(2) >> 0) And &B1
+                    input18 = (Data(2) >> 1) And &B1
+                    input19 = (Data(2) >> 2) And &B1
+                    input20 = (Data(2) >> 3) And &B1
+
             End Select
-
 
         Catch ex As Exception
             Console.WriteLine(ex)
@@ -89,19 +67,21 @@ Public Class ReciveVar_form_PLC
     End Function
     Public Function ScanParseMsg(Optional timeoutmilliseconds As Integer = 100)
 
-        Dim raw_msg As New TPCANMsg()
+        While True
+            Dim raw_msg As New TPCANMsg()
         Dim sw As New Stopwatch
 
         sw.Restart()
 
-        While sw.ElapsedMilliseconds <= timeoutmilliseconds
+            While sw.ElapsedMilliseconds <= timeoutmilliseconds
 
-            If receiveCANMessage(raw_msg) Then
+                If receiveCANMessage(raw_msg) Then
                 Dim ID = raw_msg.ID
                 Dim DATA = raw_msg.DATA
             End If
 
             ParsingMSG(raw_msg.ID, raw_msg.DATA)
+            End While
         End While
     End Function
 
