@@ -1,6 +1,7 @@
 ﻿
 
 Imports System.IO
+Imports System.Threading
 Imports System.Threading.Tasks
 Imports System.Windows.Forms.DataVisualization.Charting
 
@@ -9,8 +10,10 @@ Public Class Main
 
     Dim can_var As New CanCommunication
     Dim varCan_Tx As New SendVar_to_PLC
+    Dim suite As New TestSuite
     Dim read As New ReadFile()
     Dim find As New FindFiles()
+    Dim C002080 As New Cab_C002080(3000, 500)
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitializeBasicComponents()
@@ -20,7 +23,10 @@ Public Class Main
         Loop While Not can_var.is_Inizialized()
 
         'can_var.SendCmdToAncor(varCan_Tx.MsgComposer(), 20)
-
+        Dim task = New Task(Sub()
+                                ReciveVar_form_PLC.GetIntance.ScanParseMsg()
+                            End Sub)
+        task.Start()
     End Sub
 
     Private Sub cbox_list_cables_DropDown(sender As Object, e As EventArgs) Handles cbox_list_cables.DropDown
@@ -44,4 +50,7 @@ Public Class Main
         ctrl.Text = text
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        C002080.Execute(Me)
+    End Sub
 End Class
