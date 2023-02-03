@@ -212,7 +212,7 @@
     <Compile Include="CollaudoETSDN\CanComunicaation\ReciveVar_form_PLC.vb" />
     <Compile Include="CollaudoETSDN\CanComunicaation\SendVar_to_PLC.vb" />
     <Compile Include="CollaudoETSDN\TestResult\TestResultPower.vb" />
-    <Compile Include="CollaudoETSDN\Tests\C002080.vb" />
+    <Compile Include="CollaudoETSDN\Tests\Cab_C002080.vb" />
     <Compile Include="FrmPeak.Designer.vb">
       <DependentUpon>FrmPeak.resx</DependentUpon>
       <AutoGen>True</AutoGen>
