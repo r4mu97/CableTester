@@ -49,6 +49,37 @@ Public Class Main
         End If
         ctrl.Text = text
     End Sub
+    Private Delegate Sub ChangeControlRichTextDelegate(ByVal ctrl As RichTextBox, ByVal text As String, val As String)
+    Public Sub ChangeControlRichText(ByVal ctrl As RichTextBox, ByVal text As String, val As String)
+        If Me.InvokeRequired Then
+            Try
+                Me.Invoke(New ChangeControlRichTextDelegate(AddressOf ChangeControlRichText), New Object() {ctrl, text, val})
+            Catch ex As Exception
+                Console.WriteLine(ex)
+            End Try
+
+            Return
+        End If
+
+        If val = "White" Then
+            ctrl.SelectionColor = Color.White
+            ctrl.AppendText(text & Environment.NewLine)
+        ElseIf val = "Red" Then
+            ctrl.SelectionColor = Color.Red
+            ctrl.AppendText(text & Environment.NewLine)
+        ElseIf val = "Green" Then
+            ctrl.SelectionColor = Color.Green
+            ctrl.AppendText(text & Environment.NewLine)
+        ElseIf val = "Orange" Then
+            ctrl.SelectionColor = Color.Orange
+            ctrl.AppendText(text & Environment.NewLine)
+        ElseIf val = "Blue" Then
+            ctrl.SelectionColor = Color.SteelBlue
+            ctrl.AppendText(text & Environment.NewLine)
+        End If
+
+
+    End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         C002080.Execute(Me)
