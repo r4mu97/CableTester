@@ -5,6 +5,12 @@ Public Class TestExecutor
     Dim varTxEtsdn As New SendVar_to_PLC
     Dim canEtsdnVar As New CanCommunication
     Public Function Execute_test_suite(suite As TestSuite, gui As Main)
+
+
+        For Each cab In suite.GeTests()
+            cab.Execute(gui)
+        Next
+        'Dim thread_heartbeat = New Thread(AddressOf canEtsdnVar.heartbeat)
         'Dim nTestDone As Integer = 0
         ''creo la lista dei risultati ogni volta che chiamo la fuznione(ogni volta che lancio il collaudo di un dispositivo)
         'Dim results As New List(Of TestResult)
