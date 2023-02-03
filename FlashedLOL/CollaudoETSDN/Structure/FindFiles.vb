@@ -12,11 +12,12 @@ Public Class FindFiles
 
         Dim directory As String = "C:\SW\_Progetti\CableTester\FlashedLOL\CablesList"
         Dim cables_list As String() = System.IO.Directory.GetFiles(directory, "*")
-
+        Dim partToRemove = ".txt"
         gui.cbox_list_cables.Items.Clear()
 
         For Each file_code As String In cables_list
-            gui.cbox_list_cables.Items.Add(System.IO.Path.GetFileName(file_code))
+            Dim newFileName As String = file_code.Replace(partToRemove, String.Empty)
+            gui.cbox_list_cables.Items.Add(System.IO.Path.GetFileName(newFileName))
         Next
     End Function
 End Class
