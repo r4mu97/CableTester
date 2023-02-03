@@ -14,7 +14,7 @@
                 Dim canChannels = getAvailableCanChannels()
                 ReciveVar_form_PLC.GetIntance.canOpenInizialized = False
 
-                If init_CANOPEN(canChannels(0), TPCANOPENBaudrate.PCANOPENBAUD_500K, False) Then
+                If init_CANOPEN(canChannels(0), TPCANOPENBaudrate.PCANOPENBAUD_250K, False) Then
                     'resetto il timer 
                     tmr.Reset()
                     ReciveVar_form_PLC.GetIntance.canOpenInizialized = True
@@ -39,13 +39,13 @@
 
             Dim canMsg As New TPCANOPENMsg()
 
-            canMsg.ID = &H380
+            canMsg.ID = &H400
             canMsg.LEN = 8
             canMsg.DATA = New Byte() {0, 0, 0, 0, 0, 0, 0, 0}
 
-            canMsg.DATA(0) = 0
-            canMsg.DATA(1) = Convert.ToByte(bytesToSend And &HFF)
-            canMsg.DATA(2) = Convert.ToByte(bytesToSend >> 8)
+            canMsg.DATA(0) = Convert.ToByte(bytesToSend And &HFF)
+            canMsg.DATA(1) = Convert.ToByte(bytesToSend >> 8)
+
             sendCANMessage(canMsg)
 
         End If
