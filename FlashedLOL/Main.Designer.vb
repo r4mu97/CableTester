@@ -33,6 +33,7 @@ Partial Class Main
         Me.LCalibrazione = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.cbox_list_cables = New System.Windows.Forms.ComboBox()
+        Me.info_text_box = New System.Windows.Forms.RichTextBox()
         Me.SuspendLayout()
         '
         'Label12
@@ -113,7 +114,7 @@ Partial Class Main
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(0, 0)
+        Me.Button1.Location = New System.Drawing.Point(380, 55)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 141
@@ -123,16 +124,26 @@ Partial Class Main
         'cbox_list_cables
         '
         Me.cbox_list_cables.FormattingEnabled = True
-        Me.cbox_list_cables.Location = New System.Drawing.Point(81, 2)
+        Me.cbox_list_cables.Location = New System.Drawing.Point(271, 12)
         Me.cbox_list_cables.Name = "cbox_list_cables"
         Me.cbox_list_cables.Size = New System.Drawing.Size(121, 21)
         Me.cbox_list_cables.TabIndex = 142
+        '
+        'info_text_box
+        '
+        Me.info_text_box.BackColor = System.Drawing.Color.Black
+        Me.info_text_box.Location = New System.Drawing.Point(0, -1)
+        Me.info_text_box.Name = "info_text_box"
+        Me.info_text_box.Size = New System.Drawing.Size(265, 291)
+        Me.info_text_box.TabIndex = 143
+        Me.info_text_box.Text = ""
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(790, 289)
+        Me.Controls.Add(Me.info_text_box)
         Me.Controls.Add(Me.cbox_list_cables)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LCalibrazione)
@@ -161,4 +172,5 @@ Partial Class Main
     Friend WithEvents LCalibrazione As System.Windows.Forms.Label
     Friend WithEvents Button1 As Button
     Friend WithEvents cbox_list_cables As ComboBox
+    Friend WithEvents info_text_box As RichTextBox
 End Class
