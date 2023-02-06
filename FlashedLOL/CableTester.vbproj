@@ -192,8 +192,8 @@
     <Compile Include="CollaudoETSDN\CanComunicaation\CanCommunication.vb" />
     <Compile Include="CollaudoETSDN\ErrorList\TestError.vb" />
     <Compile Include="CollaudoETSDN\MongoDB\MongoDBdata.vb" />
-    <Compile Include="CollaudoETSDN\Structure\FindFiles.vb" />
-    <Compile Include="CollaudoETSDN\Structure\ReadFile.vb" />
+    <Compile Include="CollaudoETSDN\Functions\FindFiles.vb" />
+    <Compile Include="CollaudoETSDN\Functions\ReadFile.vb" />
     <Compile Include="CollaudoETSDN\Structure\PrototypTest.vb" />
     <Compile Include="CollaudoETSDN\Structure\TestExecutor.vb" />
     <Compile Include="CollaudoETSDN\TestResult\ManageGraphics\pBoxPower.vb">
