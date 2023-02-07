@@ -53,12 +53,12 @@ Public Class ReadFile
     End Function
 
     Public Function Assigne_the_lines(list_of_data As List(Of String), gui As Main)
-        Dim i As Int16
+        Dim i As Int16 = 0
         For Each datas In list_of_data
-
-            gui.ChangeControlRichText(gui.info_text_box, list_of_data(0), "white")
+            gui.ChangeControlRichText(gui.info_text_box, list_of_data(i), "white")
+            i += 1
         Next
-
+        list_of_data.Clear()
         Return list_of_data
     End Function
 
