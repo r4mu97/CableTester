@@ -191,6 +191,7 @@
     <Compile Include="CAN.vb" />
     <Compile Include="CollaudoETSDN\CanComunicaation\CanCommunication.vb" />
     <Compile Include="CollaudoETSDN\ErrorList\TestError.vb" />
+    <Compile Include="CollaudoETSDN\Functions\Read_File_CSV.vb" />
     <Compile Include="CollaudoETSDN\MongoDB\MongoDBdata.vb" />
     <Compile Include="CollaudoETSDN\Functions\FindFiles.vb" />
     <Compile Include="CollaudoETSDN\Functions\ReadFile.vb" />
