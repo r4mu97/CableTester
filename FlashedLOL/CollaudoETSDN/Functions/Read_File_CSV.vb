@@ -29,8 +29,6 @@ Public Class Read_File_CSV
         TextFileReader.SetDelimiters(";")
 
         Dim currentRow As String()
-        Dim i As Int16 = 0
-        Dim y As Int16 = 0
 
         While Not TextFileReader.EndOfData
 
@@ -60,6 +58,31 @@ Public Class Read_File_CSV
 
             End Try
         End While
+
+        For Each entry In map_output
+            Dim connections = map_connection(entry.Key)
+            'invio alla centralina il pin da alzare 
+            'leggo i messaggi can 
+            Dim can_data = ReciveVar_form_PLC.GetIntance.GetDataCan()
+
+            For i = 0 To MAX_INPUTS - 1
+
+                If (((can_data >> i) And &B1) = 1) = connections(i) Then
+                    gui.ChangeControlRichText(gui.info_text_box, "ok", "", clr:="Red")
+                Else
+                    If map_input.ContainsKey(i + 1) Then
+                        If connections(i) = True Then
+                            Console.WriteLine("Alimentato " & entry.Key & " Non " & map_input(i + 1))
+                        Else
+                            Console.WriteLine("Alimentato " & entry.Key & " Alzato " & map_input(i + 1))
+                        End If
+                    End If
+                End If
+            Next
+
+        Next
+        Return map_connection
+        'ReciveVar_form_PLC.GetIntance.GetDataCan()
 
     End Function
 
