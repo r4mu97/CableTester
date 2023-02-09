@@ -13,6 +13,7 @@ Public Class Main
     Dim suite As New TestSuite
     Dim read As New ReadFile()
     Dim find As New FindFiles()
+    Dim readCSV As New Read_File_CSV
     Dim C002080 As New Cab_C002080(3000, 500)
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -82,6 +83,12 @@ Public Class Main
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        C002080.Execute(Me)
+        Dim Data = readCSV.ReadCSV(cbox_list_cables.SelectedItem, Me)
+        'For Each key In Data.Keys
+        '    Console.WriteLine(key)
+        '    For Each value In Data(key)
+        '        Console.WriteLine("  " & value.ToString)
+        '    Next
+        'Next
     End Sub
 End Class
