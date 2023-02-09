@@ -12,7 +12,7 @@ Public Class FindFiles
 
         Dim directory As String = "C:\SW\_Progetti\CableTester\FlashedLOL\CablesList"
         Dim cables_list As String() = System.IO.Directory.GetFiles(directory, "*")
-        Dim partToRemove = ".txt"
+        Dim partToRemove = ".csv"
         gui.cbox_list_cables.Items.Clear()
 
         For Each file_code As String In cables_list
