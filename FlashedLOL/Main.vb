@@ -50,11 +50,11 @@ Public Class Main
         End If
         ctrl.Text = text
     End Sub
-    Private Delegate Sub ChangeControlRichTextDelegate(ByVal ctrl As RichTextBox, ByVal text As String, val As String)
-    Public Sub ChangeControlRichText(ByVal ctrl As RichTextBox, ByVal text As String, val As String)
+    Private Delegate Sub ChangeControlRichTextDelegate(ByVal ctrl As RichTextBox, ByVal text As String, val As String, str As String, str1 As String, clr As String)
+    Public Sub ChangeControlRichText(ByVal ctrl As RichTextBox, ByVal text As String, val As String, Optional str As String = "", Optional str1 As String = "", Optional clr As String = "")
         If Me.InvokeRequired Then
             Try
-                Me.Invoke(New ChangeControlRichTextDelegate(AddressOf ChangeControlRichText), New Object() {ctrl, text, val})
+                Me.Invoke(New ChangeControlRichTextDelegate(AddressOf ChangeControlRichText), New Object() {ctrl, text, val, str, str1, clr})
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
@@ -62,19 +62,19 @@ Public Class Main
             Return
         End If
 
-        If val = "White" Then
+        If clr = "White" Then
             ctrl.SelectionColor = Color.White
             ctrl.AppendText(text & Environment.NewLine)
-        ElseIf val = "Red" Then
+        ElseIf clr = "Red" Then
             ctrl.SelectionColor = Color.Red
             ctrl.AppendText(text & Environment.NewLine)
-        ElseIf val = "Green" Then
+        ElseIf clr = "Green" Then
             ctrl.SelectionColor = Color.Green
             ctrl.AppendText(text & Environment.NewLine)
-        ElseIf val = "Orange" Then
+        ElseIf clr = "Orange" Then
             ctrl.SelectionColor = Color.Orange
             ctrl.AppendText(text & Environment.NewLine)
-        ElseIf val = "Blue" Then
+        ElseIf clr = "Blue" Then
             ctrl.SelectionColor = Color.SteelBlue
             ctrl.AppendText(text & Environment.NewLine)
         End If
@@ -84,11 +84,5 @@ Public Class Main
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim Data = readCSV.ReadCSV(cbox_list_cables.SelectedItem, Me)
-        'For Each key In Data.Keys
-        '    Console.WriteLine(key)
-        '    For Each value In Data(key)
-        '        Console.WriteLine("  " & value.ToString)
-        '    Next
-        'Next
     End Sub
 End Class
