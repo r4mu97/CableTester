@@ -134,6 +134,7 @@ Partial Class Main
         Me.info_text_box.BackColor = System.Drawing.Color.Black
         Me.info_text_box.Location = New System.Drawing.Point(0, -1)
         Me.info_text_box.Name = "info_text_box"
+        Me.info_text_box.ReadOnly = True
         Me.info_text_box.Size = New System.Drawing.Size(265, 291)
         Me.info_text_box.TabIndex = 143
         Me.info_text_box.Text = ""
