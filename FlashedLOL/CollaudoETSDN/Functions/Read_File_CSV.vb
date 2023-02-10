@@ -54,7 +54,7 @@ Public Class Read_File_CSV
                 End If
 
             Catch ex As Exception
-                gui.ChangeControlRichText(gui.info_text_box, ex.ToString, "red")
+                gui.ChangeControlRichText(gui.info_text_box, "red", ex.ToString)
 
             End Try
         End While
@@ -68,13 +68,13 @@ Public Class Read_File_CSV
             For i = 0 To MAX_INPUTS - 1
 
                 If (((can_data >> i) And &B1) = 1) = connections(i) Then
-                    gui.ChangeControlRichText(gui.info_text_box, "ok", "", clr:="Red")
+                    gui.ChangeControlRichText(gui.info_text_box, "Green", "OK")
                 Else
                     If map_input.ContainsKey(i + 1) Then
                         If connections(i) = True Then
-                            Console.WriteLine("Alimentato " & entry.Key & " Non " & map_input(i + 1))
+                            gui.ChangeControlRichText(gui.info_text_box, "Red", "Alimentato ", entry.Key.ToString, " Non ", map_input(i + 1))
                         Else
-                            Console.WriteLine("Alimentato " & entry.Key & " Alzato " & map_input(i + 1))
+                            gui.ChangeControlRichText(gui.info_text_box, "Red", "Alimentato ", entry.Key.ToString, " Alzato ", map_input(i + 1))
                         End If
                     End If
                 End If

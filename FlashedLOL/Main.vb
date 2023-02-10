@@ -50,37 +50,45 @@ Public Class Main
         End If
         ctrl.Text = text
     End Sub
-    Private Delegate Sub ChangeControlRichTextDelegate(ByVal ctrl As RichTextBox, ByVal text As String, val As String, str As String, str1 As String, clr As String)
-    Public Sub ChangeControlRichText(ByVal ctrl As RichTextBox, ByVal text As String, val As String, Optional str As String = "", Optional str1 As String = "", Optional clr As String = "")
-        If Me.InvokeRequired Then
+
+    Private Delegate Sub ChangeControlRichTextDelegate(ByVal ctrl As RichTextBox, clr_str As String, text_output As String, ByVal pin_output As String, text_input As String, pin_input As String)
+    Public Sub ChangeControlRichText(ctrl As RichTextBox, clr_str As String, text_output As String, Optional pin_output As String = Nothing, Optional text_input As String = Nothing, Optional pin_input As String = Nothing)
+        If InvokeRequired Then
             Try
-                Me.Invoke(New ChangeControlRichTextDelegate(AddressOf ChangeControlRichText), New Object() {ctrl, text, val, str, str1, clr})
+                Invoke(New ChangeControlRichTextDelegate(AddressOf ChangeControlRichText), New Object() {ctrl, clr_str, text_output, pin_output, text_input, pin_input})
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
 
             Return
         End If
+        Dim all_str = text_output & pin_output & text_input & pin_input
 
-        If clr = "White" Then
+        If clr_str = "White" Then
             ctrl.SelectionColor = Color.White
-            ctrl.AppendText(text & Environment.NewLine)
-        ElseIf clr = "Red" Then
+            ctrl.AppendText(all_str & Environment.NewLine)
+        ElseIf clr_str = "Red" Then
             ctrl.SelectionColor = Color.Red
-            ctrl.AppendText(text & Environment.NewLine)
-        ElseIf clr = "Green" Then
+            ctrl.AppendText(all_str & Environment.NewLine)
+        ElseIf clr_str = "Green" Then
             ctrl.SelectionColor = Color.Green
-            ctrl.AppendText(text & Environment.NewLine)
-        ElseIf clr = "Orange" Then
+            ctrl.AppendText(all_str & Environment.NewLine)
+        ElseIf clr_str = "Orange" Then
             ctrl.SelectionColor = Color.Orange
-            ctrl.AppendText(text & Environment.NewLine)
-        ElseIf clr = "Blue" Then
+            ctrl.AppendText(all_str & Environment.NewLine)
+        ElseIf clr_str = "Blue" Then
             ctrl.SelectionColor = Color.SteelBlue
-            ctrl.AppendText(text & Environment.NewLine)
+            ctrl.AppendText(all_str & Environment.NewLine)
         End If
-
-
+        ctrl = Nothing
+        text_output = Nothing
+        pin_output = Nothing
+        text_input = Nothing
+        pin_input = Nothing
+        all_str = Nothing
     End Sub
+
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim Data = readCSV.ReadCSV(cbox_list_cables.SelectedItem, Me)
