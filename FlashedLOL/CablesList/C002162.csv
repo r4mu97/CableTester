@@ -1,3 +1,10 @@
-1;pin1_MNL;1;pin1_MNL_F
-1;pin1_MNL;3;pin2_m12
-2;bla;4;cia
+1;pin1_MNL-M;1;pin1_MNL_F
+1;pin1_MNL-M;7;pin2_m12
+2;pin2_MNL-M;2;pin2_MNL_F
+2;pin2_MNL-M;8;pin4_M12
+3;pin3_MNL-M;3;pin3_MNL_F
+4;pin4_MNL-M;4;pin4_MNL_F
+4;pin4_MNL-M;9;pin3_M12
+5;pin5_MNL-M;5;pin5_MNL_F
+5;pin5_MNL-M;10;pin5_M12
+6;pin6_MNL-M;6;pin6_MNL_F
