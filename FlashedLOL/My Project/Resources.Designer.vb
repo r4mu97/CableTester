@@ -69,15 +69,5 @@ Namespace My.Resources
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
-        
-        '''<summary>
-        '''  Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property Il_mio_progetto__19_() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Il mio progetto (19)", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
     End Module
 End Namespace

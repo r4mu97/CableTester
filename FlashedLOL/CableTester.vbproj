@@ -228,12 +228,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="StyledTxtBox.Designer.vb">
-      <DependentUpon>StyledTxtBox.vb</DependentUpon>
-    </Compile>
-    <Compile Include="StyledTxtBox.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="UsbDevice.vb" />
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
@@ -269,9 +263,6 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StyledTxtBox.resx">
-      <DependentUpon>StyledTxtBox.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

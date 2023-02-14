@@ -36,7 +36,9 @@ Partial Class Main
         Me.info_text_box = New System.Windows.Forms.RichTextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label12
@@ -148,6 +150,7 @@ Partial Class Main
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(108, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Location = New System.Drawing.Point(0, -2)
         Me.Panel1.Name = "Panel1"
@@ -164,6 +167,16 @@ Partial Class Main
         Me.Button2.Size = New System.Drawing.Size(19, 18)
         Me.Button2.TabIndex = 145
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackgroundImage = CType(resources.GetObject("PictureBox1.BackgroundImage"), System.Drawing.Image)
+        Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.PictureBox1.Location = New System.Drawing.Point(3, 7)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(27, 24)
+        Me.PictureBox1.TabIndex = 146
+        Me.PictureBox1.TabStop = False
         '
         'Main
         '
@@ -191,6 +204,7 @@ Partial Class Main
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CableTester"
         Me.Panel1.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -208,4 +222,5 @@ Partial Class Main
     Friend WithEvents info_text_box As RichTextBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Button2 As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class
