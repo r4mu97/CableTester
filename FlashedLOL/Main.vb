@@ -93,9 +93,14 @@ Public Class Main
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles StartTest_btn.Click
+
         ChangeControlRichText(info_text_box, "White", "Start Test")
-        Dim Data = readCSV.ReadCSV(listCable_cbox.Text & ".CSV", Me)
-        ChangeControlRichText(info_text_box, "White", "End Test")
+        Dim cable_selected = listCable_cbox.Text & ".CSV"
+
+        Dim task = New Task(Sub()
+                                readCSV.ReadCSV(cable_selected, Me)
+                            End Sub)
+        task.Start()
     End Sub
 
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
