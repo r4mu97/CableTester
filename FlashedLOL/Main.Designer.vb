@@ -123,9 +123,9 @@ Partial Class Main
         'StartTest_btn
         '
         Me.StartTest_btn.BackColor = System.Drawing.Color.White
-        Me.StartTest_btn.Location = New System.Drawing.Point(504, 248)
+        Me.StartTest_btn.Location = New System.Drawing.Point(512, 255)
         Me.StartTest_btn.Name = "StartTest_btn"
-        Me.StartTest_btn.Size = New System.Drawing.Size(81, 35)
+        Me.StartTest_btn.Size = New System.Drawing.Size(73, 28)
         Me.StartTest_btn.TabIndex = 141
         Me.StartTest_btn.Text = "Start"
         Me.StartTest_btn.UseVisualStyleBackColor = False
@@ -189,16 +189,12 @@ Partial Class Main
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(188, 265)
+        Me.Button1.Location = New System.Drawing.Point(193, 260)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(58, 23)
         Me.Button1.TabIndex = 145
         Me.Button1.Text = "Clear"
         Me.Button1.UseVisualStyleBackColor = False
-        '
-        'Timer1
-        '
         '
         'Main
         '

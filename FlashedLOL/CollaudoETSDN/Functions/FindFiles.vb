@@ -10,14 +10,14 @@ Public Class FindFiles
 
     Public Function Find_Files(gui As Main)
 
-        Dim directory As String = Application.StartupPath & "\\CablesList\\"
-        Dim cables_list As String() = System.IO.Directory.GetFiles(directory, "*")
-        Dim partToRemove = ".csv"
+        Dim path As String = Application.StartupPath & "\\CablesList\\"
+        Dim cables_list As String() = System.IO.Directory.GetFiles(path, "*")
+        Dim part_to_remove = ".csv"
         gui.listCable_cbox.Items.Clear()
 
-        For Each file_code As String In cables_list
-            Dim newFileName As String = file_code.Replace(partToRemove, String.Empty)
-            gui.listCable_cbox.Items.Add(System.IO.Path.GetFileName(newFileName))
+        For Each code As String In cables_list
+            Dim new_code As String = code.Replace(part_to_remove, String.Empty)
+            gui.listCable_cbox.Items.Add(System.IO.Path.GetFileName(new_code))
         Next
     End Function
 End Class

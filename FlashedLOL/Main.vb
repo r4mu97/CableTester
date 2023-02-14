@@ -93,7 +93,9 @@ Public Class Main
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles StartTest_btn.Click
-        Dim Data = readCSV.ReadCSV(listCable_cbox.SelectedItem, Me)
+        ChangeControlRichText(info_text_box, "White", "Start Test")
+        Dim Data = readCSV.ReadCSV(listCable_cbox.Text & ".CSV", Me)
+        ChangeControlRichText(info_text_box, "White", "End Test")
     End Sub
 
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
@@ -132,7 +134,17 @@ Public Class Main
         info_text_box.Clear()
     End Sub
 
-
+    Private Sub listCable_cbox_KeyPress(sender As Object, e As KeyPressEventArgs) Handles listCable_cbox.KeyPress
+        If e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Return) Then
+            ' Perform desired action here
+            If Not listCable_cbox.Text.Contains(".CSV") Then
+                Dim code_with_extension = listCable_cbox.Text + ".CSV"
+                readCSV.ReadCSV(code_with_extension, Me)
+            Else
+                readCSV.ReadCSV(listCable_cbox.Text, Me)
+            End If
+        End If
+    End Sub
 End Class
 
 
