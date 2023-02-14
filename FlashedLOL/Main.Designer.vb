@@ -22,6 +22,7 @@ Partial Class Main
     'Non modificarla nell'editor del codice.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
         Me.Label12 = New System.Windows.Forms.Label()
         Me.LInvioHR = New System.Windows.Forms.Label()
@@ -31,12 +32,15 @@ Partial Class Main
         Me.LAccelerometro = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.LCalibrazione = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.cbox_list_cables = New System.Windows.Forms.ComboBox()
+        Me.StartTest_btn = New System.Windows.Forms.Button()
+        Me.listCable_cbox = New System.Windows.Forms.ComboBox()
         Me.info_text_box = New System.Windows.Forms.RichTextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.closeForm_btn = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.ProgressBarCircular = New System.Windows.Forms.ProgressBar()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -117,29 +121,34 @@ Partial Class Main
         Me.LCalibrazione.Text = "Test completato"
         Me.LCalibrazione.Visible = False
         '
-        'Button1
+        'StartTest_btn
         '
-        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(108, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(196, Byte), Integer))
-        Me.Button1.Location = New System.Drawing.Point(506, 67)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(81, 35)
-        Me.Button1.TabIndex = 141
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.StartTest_btn.BackColor = System.Drawing.Color.White
+        Me.StartTest_btn.Location = New System.Drawing.Point(504, 248)
+        Me.StartTest_btn.Name = "StartTest_btn"
+        Me.StartTest_btn.Size = New System.Drawing.Size(81, 35)
+        Me.StartTest_btn.TabIndex = 141
+        Me.StartTest_btn.Text = "Start"
+        Me.StartTest_btn.UseVisualStyleBackColor = False
         '
-        'cbox_list_cables
+        'listCable_cbox
         '
-        Me.cbox_list_cables.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbox_list_cables.FormattingEnabled = True
-        Me.cbox_list_cables.Location = New System.Drawing.Point(466, 40)
-        Me.cbox_list_cables.Name = "cbox_list_cables"
-        Me.cbox_list_cables.Size = New System.Drawing.Size(121, 21)
-        Me.cbox_list_cables.TabIndex = 142
+        Me.listCable_cbox.BackColor = System.Drawing.Color.White
+        Me.listCable_cbox.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.listCable_cbox.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.listCable_cbox.FormattingEnabled = True
+        Me.listCable_cbox.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.listCable_cbox.Location = New System.Drawing.Point(468, 40)
+        Me.listCable_cbox.Name = "listCable_cbox"
+        Me.listCable_cbox.Size = New System.Drawing.Size(121, 21)
+        Me.listCable_cbox.Sorted = True
+        Me.listCable_cbox.TabIndex = 142
         '
         'info_text_box
         '
         Me.info_text_box.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(48, Byte), Integer))
         Me.info_text_box.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.info_text_box.ForeColor = System.Drawing.SystemColors.Window
         Me.info_text_box.Location = New System.Drawing.Point(0, 33)
         Me.info_text_box.Name = "info_text_box"
         Me.info_text_box.ReadOnly = True
@@ -151,22 +160,11 @@ Partial Class Main
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(108, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(196, Byte), Integer))
         Me.Panel1.Controls.Add(Me.PictureBox1)
-        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Controls.Add(Me.closeForm_btn)
         Me.Panel1.Location = New System.Drawing.Point(0, -2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(596, 36)
         Me.Panel1.TabIndex = 144
-        '
-        'Button2
-        '
-        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(570, 9)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(19, 18)
-        Me.Button2.TabIndex = 145
-        Me.Button2.UseVisualStyleBackColor = True
         '
         'PictureBox1
         '
@@ -178,6 +176,38 @@ Partial Class Main
         Me.PictureBox1.TabIndex = 146
         Me.PictureBox1.TabStop = False
         '
+        'closeForm_btn
+        '
+        Me.closeForm_btn.BackgroundImage = CType(resources.GetObject("closeForm_btn.BackgroundImage"), System.Drawing.Image)
+        Me.closeForm_btn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.closeForm_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.closeForm_btn.Location = New System.Drawing.Point(570, 9)
+        Me.closeForm_btn.Name = "closeForm_btn"
+        Me.closeForm_btn.Size = New System.Drawing.Size(19, 18)
+        Me.closeForm_btn.TabIndex = 145
+        Me.closeForm_btn.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Transparent
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Location = New System.Drawing.Point(188, 265)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 145
+        Me.Button1.Text = "Clear"
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'ProgressBarCircular
+        '
+        Me.ProgressBarCircular.Location = New System.Drawing.Point(381, 141)
+        Me.ProgressBarCircular.Name = "ProgressBarCircular"
+        Me.ProgressBarCircular.Size = New System.Drawing.Size(100, 100)
+        Me.ProgressBarCircular.TabIndex = 146
+        '
+        'Timer1
+        '
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -185,10 +215,12 @@ Partial Class Main
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(591, 289)
+        Me.Controls.Add(Me.ProgressBarCircular)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.info_text_box)
-        Me.Controls.Add(Me.cbox_list_cables)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.listCable_cbox)
+        Me.Controls.Add(Me.StartTest_btn)
         Me.Controls.Add(Me.LCalibrazione)
         Me.Controls.Add(Me.Label23)
         Me.Controls.Add(Me.LAccelerometro)
@@ -217,10 +249,13 @@ Partial Class Main
     Friend WithEvents LAccelerometro As System.Windows.Forms.Label
     Friend WithEvents Label23 As System.Windows.Forms.Label
     Friend WithEvents LCalibrazione As System.Windows.Forms.Label
-    Friend WithEvents Button1 As Button
-    Friend WithEvents cbox_list_cables As ComboBox
+    Friend WithEvents StartTest_btn As Button
+    Friend WithEvents listCable_cbox As ComboBox
     Friend WithEvents info_text_box As RichTextBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents Button2 As Button
+    Friend WithEvents closeForm_btn As Button
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents ProgressBarCircular As ProgressBar
+    Friend WithEvents Timer1 As Timer
 End Class

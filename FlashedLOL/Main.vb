@@ -5,6 +5,7 @@ Imports System.Threading
 Imports System.Threading.Tasks
 Imports System.Web
 Imports System.Windows.Forms.DataVisualization.Charting
+Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 
 
 Public Class Main
@@ -33,11 +34,11 @@ Public Class Main
         task.Start()
     End Sub
 
-    Private Sub cbox_list_cables_DropDown(sender As Object, e As EventArgs) Handles cbox_list_cables.DropDown
+    Private Sub cbox_list_cables_DropDown(sender As Object, e As EventArgs) Handles listCable_cbox.DropDown
         find.Find_Files(Me)
     End Sub
-    Private Sub cbox_list_cables_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbox_list_cables.SelectedIndexChanged
-        read.Read_configCable_file(cbox_list_cables.SelectedItem)
+    Private Sub cbox_list_cables_SelectedIndexChanged(sender As Object, e As EventArgs) Handles listCable_cbox.SelectedIndexChanged
+        read.Read_configCable_file(listCable_cbox.SelectedItem)
     End Sub
 
     Private Delegate Sub ChangeControlTextDelegate(ByVal ctrl As Control, ByVal text As String)
@@ -91,9 +92,8 @@ Public Class Main
         all_str = Nothing
     End Sub
 
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim Data = readCSV.ReadCSV(cbox_list_cables.SelectedItem, Me)
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles StartTest_btn.Click
+        Dim Data = readCSV.ReadCSV(listCable_cbox.SelectedItem, Me)
     End Sub
 
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
@@ -116,18 +116,36 @@ Public Class Main
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Button2.FlatStyle = FlatStyle.Flat
-        Button2.FlatAppearance.BorderSize = 0
-        Button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(71, 66, 163)
-        Button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(49, 106, 197)
-        Button2.ForeColor = Color.White
-        Button2.Font = New Font("Segoe UI", 11, FontStyle.Bold)
-
+        closeForm_btn.FlatStyle = FlatStyle.Flat
+        closeForm_btn.FlatAppearance.BorderSize = 0
+        closeForm_btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(71, 66, 163)
+        closeForm_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(49, 106, 197)
+        closeForm_btn.ForeColor = Color.White
+        closeForm_btn.Font = New Font("Segoe UI", 11, FontStyle.Bold)
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        ProgressBarCircular.Value += 1
+        If ProgressBarCircular.Value >= ProgressBarCircular.Maximum Then
+            ProgressBarCircular.Value = 0
+        End If
+    End Sub
+
+
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles closeForm_btn.Click
         Me.Close()
     End Sub
+
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        info_text_box.Clear()
+    End Sub
+
+    Private Sub ProgressBarCircular_ValueChanged(sender As Object, e As EventArgs) Handles Me.
+        Invalidate()
+    End Sub
+
 End Class
+
 

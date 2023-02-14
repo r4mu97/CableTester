@@ -121,7 +121,7 @@
   <data name="PictureBox1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABOMAAATdCAYAAAANaJIAAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wgAADsIBFShKgAAA/7JJREFUeF7s/QWAnMeVrw9//3vv7r27m6WgLWmwuXtIYFtmjGMK2TGKmZmZWbZl
+        vgAADr4B6kKxwAAA/7JJREFUeF7s/QWAnMeVrw9//3vv7r27m6WgLWmwuXtIYFtmjGMK2TGKmZmZWbZl
         yyKLpdEwMzMzMzOLNRroPt859Xb19LRGjnc3m3WS+iWP66WG6ekZqR+dqvP/ExERERERERERERERERER
         ERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERER
         ERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERER
@@ -11895,7 +11895,7 @@
         UCgUCoVCoVAoFAqFQqFQKBQKhUKhUCgUCoVCoVAoFMp/gf/n//n/AOZYFuB4eOiVAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="Button2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="closeForm_btn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAg4RJREFUeF7t
         vQu4dNld1knSH4SPBJJO8/F11d61q875zvf1LWOS7jTdHdLaMgghIMHYCSjECzwzIwIZ5SJEBQSiBuKD
@@ -12462,6 +12462,9 @@
         Awmn4e00aI3WAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>39</value>
   </metadata>

@@ -228,6 +228,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ProgressBarCircular.Designer.vb">
+      <DependentUpon>ProgressBarCircular.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ProgressBarCircular.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UsbDevice.vb" />
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
