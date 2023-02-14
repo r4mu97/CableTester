@@ -3,6 +3,7 @@
 Imports System.IO
 Imports System.Threading
 Imports System.Threading.Tasks
+Imports System.Web
 Imports System.Windows.Forms.DataVisualization.Charting
 
 
@@ -15,6 +16,8 @@ Public Class Main
     Dim find As New FindFiles()
     Dim readCSV As New Read_File_CSV
     Dim C002080 As New Cab_C002080(3000, 500)
+    Private isDragging As Boolean = False
+    Private lastLocation As Point
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitializeBasicComponents()
@@ -89,8 +92,42 @@ Public Class Main
     End Sub
 
 
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim Data = readCSV.ReadCSV(cbox_list_cables.SelectedItem, Me)
     End Sub
+
+    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
+        If e.Button = MouseButtons.Left Then
+            isDragging = True
+            lastLocation = e.Location
+        End If
+    End Sub
+
+    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
+        If isDragging Then
+            Me.Location = New Point(Me.Location.X + (e.X - lastLocation.X), Me.Location.Y + (e.Y - lastLocation.Y))
+            Me.Update()
+        End If
+    End Sub
+
+    Private Sub Panel1_MouseUp(sender As Object, e As MouseEventArgs) Handles Panel1.MouseUp
+        isDragging = False
+    End Sub
+
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Button2.FlatStyle = FlatStyle.Flat
+        Button2.FlatAppearance.BorderSize = 0
+        Button2.FlatAppearance.MouseOverBackColor = Color.FromArgb(71, 66, 163)
+        Button2.FlatAppearance.MouseDownBackColor = Color.FromArgb(49, 106, 197)
+        Button2.ForeColor = Color.White
+        Button2.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.Close()
+    End Sub
 End Class
+

@@ -34,6 +34,9 @@ Partial Class Main
         Me.Button1 = New System.Windows.Forms.Button()
         Me.cbox_list_cables = New System.Windows.Forms.ComboBox()
         Me.info_text_box = New System.Windows.Forms.RichTextBox()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label12
@@ -114,36 +117,62 @@ Partial Class Main
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(380, 55)
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(108, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.Button1.Location = New System.Drawing.Point(506, 67)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.Size = New System.Drawing.Size(81, 35)
         Me.Button1.TabIndex = 141
         Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'cbox_list_cables
         '
+        Me.cbox_list_cables.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbox_list_cables.FormattingEnabled = True
-        Me.cbox_list_cables.Location = New System.Drawing.Point(271, 12)
+        Me.cbox_list_cables.Location = New System.Drawing.Point(466, 40)
         Me.cbox_list_cables.Name = "cbox_list_cables"
         Me.cbox_list_cables.Size = New System.Drawing.Size(121, 21)
         Me.cbox_list_cables.TabIndex = 142
         '
         'info_text_box
         '
-        Me.info_text_box.BackColor = System.Drawing.Color.Black
-        Me.info_text_box.Location = New System.Drawing.Point(0, -1)
+        Me.info_text_box.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(48, Byte), Integer))
+        Me.info_text_box.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.info_text_box.Location = New System.Drawing.Point(0, 33)
         Me.info_text_box.Name = "info_text_box"
         Me.info_text_box.ReadOnly = True
-        Me.info_text_box.Size = New System.Drawing.Size(265, 291)
+        Me.info_text_box.Size = New System.Drawing.Size(265, 257)
         Me.info_text_box.TabIndex = 143
         Me.info_text_box.Text = ""
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(108, Byte), Integer), CType(CType(111, Byte), Integer), CType(CType(196, Byte), Integer))
+        Me.Panel1.Controls.Add(Me.Button2)
+        Me.Panel1.Location = New System.Drawing.Point(0, -2)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(596, 36)
+        Me.Panel1.TabIndex = 144
+        '
+        'Button2
+        '
+        Me.Button2.BackgroundImage = CType(resources.GetObject("Button2.BackgroundImage"), System.Drawing.Image)
+        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Location = New System.Drawing.Point(570, 9)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(19, 18)
+        Me.Button2.TabIndex = 145
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(790, 289)
+        Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(229, Byte), Integer))
+        Me.ClientSize = New System.Drawing.Size(591, 289)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.info_text_box)
         Me.Controls.Add(Me.cbox_list_cables)
         Me.Controls.Add(Me.Button1)
@@ -155,10 +184,13 @@ Partial Class Main
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.LInvioHR)
         Me.Controls.Add(Me.Label12)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.Name = "Main"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "CableTester"
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -174,4 +206,6 @@ Partial Class Main
     Friend WithEvents Button1 As Button
     Friend WithEvents cbox_list_cables As ComboBox
     Friend WithEvents info_text_box As RichTextBox
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents Button2 As Button
 End Class
