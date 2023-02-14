@@ -16,42 +16,6 @@ Public Class Cab_C002080
 
         tmrTest.Start()
 
-        Do
-
-            Select Case stepcase
-                Case 0
-                    varTx.SetStateOut1(1)
-                    If tmr_step.ElapsedMilliseconds > tmr_step_treshold Then
-                        tmr_step.Restart()
-                        varTx.SetStateOut1(0)
-                        stepcase = stepcase + 1
-                    End If
-                Case 1
-                    varTx.SetStateOut2(1)
-                    If tmr_step.ElapsedMilliseconds > tmr_step_treshold Then
-                        tmr_step.Restart()
-                        varTx.SetStateOut2(0)
-                        stepcase = stepcase + 1
-                    End If
-                Case 2
-                    varTx.SetStateOut3(1)
-                    If tmr_step.ElapsedMilliseconds > tmr_step_treshold Then
-                        tmr_step.Restart()
-                        varTx.SetStateOut3(0)
-                        stepcase = stepcase + 1
-                    End If
-                Case 3
-                    varTx.SetStateOut4(1)
-                    If tmr_step.ElapsedMilliseconds > tmr_step_treshold Then
-                        tmr_step.Restart()
-                        varTx.SetStateOut4(0)
-                        stepcase = 0
-                    End If
-            End Select
-        Loop While tmrTest.ElapsedMilliseconds < tmr_test_treshold
-
-
-
     End Function
 
 End Class

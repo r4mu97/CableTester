@@ -33,7 +33,7 @@
 
 
 
-    Function SendCmdToPLC(bytesToSend As UShort, Optional timeoutmilliseconds As Integer = 50, Optional setAncor As UShort = 0)
+    Function SendCmdToPLC(bytesToSend As UInt32, Optional timeoutmilliseconds As Integer = 50)
 
         If ReciveVar_form_PLC.GetIntance.canOpenInizialized Then
 
@@ -43,8 +43,10 @@
             canMsg.LEN = 8
             canMsg.DATA = New Byte() {0, 0, 0, 0, 0, 0, 0, 0}
 
-            canMsg.DATA(0) = Convert.ToByte(bytesToSend And &HFF)
+            canMsg.DATA(0) = Convert.ToByte(bytesToSend)
             canMsg.DATA(1) = Convert.ToByte(bytesToSend >> 8)
+            canMsg.DATA(2) = Convert.ToByte(bytesToSend >> 16)
+            canMsg.DATA(3) = Convert.ToByte(bytesToSend >> 24)
 
             sendCANMessage(canMsg)
 
