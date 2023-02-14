@@ -2,7 +2,7 @@
 Imports System.Collections.Generic
 Public Class Read_File_CSV
     Dim directory_of_codeCable As String = "C:\SW\_Progetti\CableTester\FlashedLOL\CablesList\"
-
+    Dim can_tx As New SendVar_to_PLC
 
     Public Function ReadCSV(code_cable_file As String, gui As Main)
         code_cable_file = code_cable_file + ".CSV"
@@ -62,13 +62,15 @@ Public Class Read_File_CSV
         For Each entry In map_output
             Dim connections = map_connection(entry.Key)
             'invio alla centralina il pin da alzare 
+            can_tx.SetOutput(entry.Key)
+            Threading.Thread.Sleep(1000)
             'leggo i messaggi can 
             Dim can_data = ReciveVar_form_PLC.GetIntance.GetDataCan()
 
             For i = 0 To MAX_INPUTS - 1
 
                 If (((can_data >> i) And &B1) = 1) = connections(i) Then
-                    gui.ChangeControlRichText(gui.info_text_box, "Green", "OK")
+                    'gui.ChangeControlRichText(gui.info_text_box, "Green", "OK")
                 Else
                     If map_input.ContainsKey(i + 1) Then
                         If connections(i) = True Then
