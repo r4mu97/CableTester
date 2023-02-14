@@ -39,7 +39,6 @@ Partial Class Main
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.closeForm_btn = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.ProgressBarCircular = New System.Windows.Forms.ProgressBar()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -198,13 +197,6 @@ Partial Class Main
         Me.Button1.Text = "Clear"
         Me.Button1.UseVisualStyleBackColor = False
         '
-        'ProgressBarCircular
-        '
-        Me.ProgressBarCircular.Location = New System.Drawing.Point(381, 141)
-        Me.ProgressBarCircular.Name = "ProgressBarCircular"
-        Me.ProgressBarCircular.Size = New System.Drawing.Size(100, 100)
-        Me.ProgressBarCircular.TabIndex = 146
-        '
         'Timer1
         '
         '
@@ -215,7 +207,6 @@ Partial Class Main
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(229, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(591, 289)
-        Me.Controls.Add(Me.ProgressBarCircular)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.info_text_box)
@@ -256,6 +247,5 @@ Partial Class Main
     Friend WithEvents closeForm_btn As Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents ProgressBarCircular As ProgressBar
     Friend WithEvents Timer1 As Timer
 End Class

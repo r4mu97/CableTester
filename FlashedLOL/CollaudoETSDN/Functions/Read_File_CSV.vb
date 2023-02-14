@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.Collections.Generic
 Public Class Read_File_CSV
-    Dim directory_of_codeCable As String = "C:\SW\_Progetti\CableTester\FlashedLOL\CablesList\"
+    Dim directory_of_codeCable As String = Application.StartupPath & "\\CablesList\\"
     Dim can_tx As New SendVar_to_PLC
 
     Public Function ReadCSV(code_cable_file As String, gui As Main)

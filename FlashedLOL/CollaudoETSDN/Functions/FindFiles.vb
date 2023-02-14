@@ -10,7 +10,7 @@ Public Class FindFiles
 
     Public Function Find_Files(gui As Main)
 
-        Dim directory As String = "C:\SW\_Progetti\CableTester\FlashedLOL\CablesList"
+        Dim directory As String = Application.StartupPath & "\\CablesList\\"
         Dim cables_list As String() = System.IO.Directory.GetFiles(directory, "*")
         Dim partToRemove = ".csv"
         gui.listCable_cbox.Items.Clear()

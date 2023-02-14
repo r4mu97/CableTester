@@ -122,17 +122,7 @@ Public Class Main
         closeForm_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(49, 106, 197)
         closeForm_btn.ForeColor = Color.White
         closeForm_btn.Font = New Font("Segoe UI", 11, FontStyle.Bold)
-
     End Sub
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        ProgressBarCircular.Value += 1
-        If ProgressBarCircular.Value >= ProgressBarCircular.Maximum Then
-            ProgressBarCircular.Value = 0
-        End If
-    End Sub
-
-
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles closeForm_btn.Click
         Me.Close()
@@ -142,9 +132,6 @@ Public Class Main
         info_text_box.Clear()
     End Sub
 
-    Private Sub ProgressBarCircular_ValueChanged(sender As Object, e As EventArgs) Handles Me.
-        Invalidate()
-    End Sub
 
 End Class
 
