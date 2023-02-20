@@ -88,6 +88,7 @@ Public Class Read_File_CSV
                 Next
 
             Next
+            gui.ChangeControlRichText(gui.info_text_box, "White", "End Test")
             Return map_connection
         Else
             If Not code_cable_file = Nothing Then
