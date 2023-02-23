@@ -27,7 +27,6 @@ Public Class Main
             can_var.InitCanOpen()
         Loop While Not can_var.is_Inizialized()
 
-        'can_var.SendCmdToAncor(varCan_Tx.MsgComposer(), 20)
         Dim task = New Task(Sub()
                                 ReciveVar_form_PLC.GetIntance.ScanParseMsg()
                             End Sub)
@@ -49,7 +48,6 @@ Public Class Main
             Catch ex As Exception
                 Console.WriteLine(ex)
             End Try
-
             Return
         End If
         ctrl.Text = text
@@ -93,15 +91,45 @@ Public Class Main
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles StartTest_btn.Click
-
+        StartTest_btn.Enabled = False
+        CheckStringInRichTextBox()
         ChangeControlRichText(info_text_box, "White", "Start Test")
         Dim cable_selected = listCable_cbox.Text & ".CSV"
-
         Dim task = New Task(Sub()
                                 readCSV.ReadCSV(cable_selected, Me)
                             End Sub)
         task.Start()
+
     End Sub
+
+    Public Sub ChangeStatebutton()
+        If Me.StartTest_btn.InvokeRequired Then
+            Me.StartTest_btn.Invoke(Sub() ChangeStatebutton())
+        Else
+            StartTest_btn.Enabled = True
+        End If
+    End Sub
+
+    Private Sub CheckStringInRichTextBox()
+        Dim searchString As String = "Start Test"
+        Dim isStringPresent As Boolean = False
+
+        For Each line As String In info_text_box.Lines
+            If line.Contains(searchString) Then
+                isStringPresent = True
+                Exit For
+            End If
+        Next
+
+        If isStringPresent Then
+            'Mostra il pulsante
+            StartTest_btn.Visible = True
+        Else
+            'Nascondi il pulsante
+            StartTest_btn.Visible = False
+        End If
+    End Sub
+
 
     Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
         If e.Button = MouseButtons.Left Then
@@ -135,7 +163,7 @@ Public Class Main
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles clear_btn.Click
         info_text_box.Clear()
     End Sub
 
@@ -149,6 +177,10 @@ Public Class Main
                 readCSV.ReadCSV(listCable_cbox.Text, Me)
             End If
         End If
+    End Sub
+
+    Private Sub info_text_box_TextChanged(sender As Object, e As EventArgs) Handles info_text_box.TextChanged
+        CheckStringInRichTextBox()
     End Sub
 End Class
 
