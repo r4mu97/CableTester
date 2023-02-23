@@ -3,7 +3,7 @@ Imports System.Collections.Generic
 Public Class Read_File_CSV
     Dim can_tx As New SendVar_to_PLC
     Dim path_of_codeCable As String = Application.StartupPath & "\\CablesList\\"
-
+    Dim test_success As Boolean = True
 
     Const MAX_OUTPUTS As Integer = 20
     Const MAX_INPUTS As Integer = 20
@@ -79,22 +79,30 @@ Public Class Read_File_CSV
                     Else
                         If map_input.ContainsKey(i + 1) Then
                             If connections(i) = True Then
-                                gui.ChangeControlRichText(gui.info_text_box, "Red", "Alimentato ", entry.Key.ToString, " Non ", map_input(i + 1))
+                                gui.ChangeControlRichText(gui.info_text_box, "Red", "Alimentato il pin ", entry.Key.ToString, " Connessione mancante sul pin ", map_input(i + 1))
+                                test_success = False
                             Else
-                                gui.ChangeControlRichText(gui.info_text_box, "Red", "Alimentato ", entry.Key.ToString, " Alzato ", map_input(i + 1))
+                                gui.ChangeControlRichText(gui.info_text_box, "Red", "Alimentato il pin ", entry.Key.ToString, " Connessione indesiderata sul pin ", map_input(i + 1))
+                                test_success = False
                             End If
                         End If
                     End If
                 Next
-
             Next
-            gui.ChangeControlRichText(gui.info_text_box, "White", "End Test")
+            If test_success Then
+                gui.ChangeControlRichText(gui.info_text_box, "Green", "End Test Success")
+            Else
+                gui.ChangeControlRichText(gui.info_text_box, "Red", "Test Failed")
+            End If
+            test_success = True
+            gui.ChangeStatebutton()
             Return map_connection
         Else
             If Not code_cable_file = Nothing Then
                 MsgBox(code_cable_file.ToString & " not found")
             End If
         End If
+        gui.ChangeStatebutton()
     End Function
 
 End Class
