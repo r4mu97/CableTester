@@ -78,7 +78,7 @@ Public Class Read_File_CSV
                     Else
                         If map_input.ContainsKey(i + 1) Then
                             If connections(i) = True Then
-                                gui.ChangeControlRichText(gui.info_text_box, "Beige", "Missing:  ")
+                                gui.ChangeControlRichText(gui.info_text_box, "Gold", "Missing:  ")
                                 gui.ChangeControlRichText(gui.info_text_box, "White", entry.Key.ToString)
                                 gui.ChangeControlRichText(gui.info_text_box, "Orange", "  to  ")
                                 gui.ChangeControlRichText(gui.info_text_box, "White", map_input(i + 1) & Environment.NewLine)
