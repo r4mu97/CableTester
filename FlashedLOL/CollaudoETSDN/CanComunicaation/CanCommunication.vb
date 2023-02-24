@@ -43,10 +43,10 @@
             canMsg.LEN = 8
             canMsg.DATA = New Byte() {0, 0, 0, 0, 0, 0, 0, 0}
 
-            canMsg.DATA(0) = Convert.ToByte(bytesToSend)
-            canMsg.DATA(1) = Convert.ToByte(bytesToSend >> 8)
-            canMsg.DATA(2) = Convert.ToByte(bytesToSend >> 16)
-            canMsg.DATA(3) = Convert.ToByte(bytesToSend >> 24)
+            canMsg.DATA(0) = Convert.ToByte(bytesToSend And &HFF)
+            canMsg.DATA(1) = Convert.ToByte((bytesToSend >> 8) And &HFF)
+            canMsg.DATA(2) = Convert.ToByte((bytesToSend >> 16) And &HFF)
+            canMsg.DATA(3) = Convert.ToByte((bytesToSend >> 24) And &HFF)
 
             sendCANMessage(canMsg)
 
