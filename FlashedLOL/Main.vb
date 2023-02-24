@@ -68,19 +68,22 @@ Public Class Main
 
         If clr_str = "White" Then
             ctrl.SelectionColor = Color.White
-            ctrl.AppendText(all_str & Environment.NewLine)
+            ctrl.AppendText(all_str)
         ElseIf clr_str = "Red" Then
             ctrl.SelectionColor = Color.Red
-            ctrl.AppendText(all_str & Environment.NewLine)
+            ctrl.AppendText(all_str)
         ElseIf clr_str = "Green" Then
             ctrl.SelectionColor = Color.Green
-            ctrl.AppendText(all_str & Environment.NewLine)
+            ctrl.AppendText(all_str)
         ElseIf clr_str = "Orange" Then
             ctrl.SelectionColor = Color.Orange
-            ctrl.AppendText(all_str & Environment.NewLine)
+            ctrl.AppendText(all_str)
         ElseIf clr_str = "Blue" Then
             ctrl.SelectionColor = Color.SteelBlue
-            ctrl.AppendText(all_str & Environment.NewLine)
+            ctrl.AppendText(all_str)
+        ElseIf clr_str = "Beige" Then
+            ctrl.SelectionColor = Color.LightCyan
+            ctrl.AppendText(all_str)
         End If
         ctrl = Nothing
         text_output = Nothing
@@ -92,8 +95,9 @@ Public Class Main
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles StartTest_btn.Click
         StartTest_btn.Enabled = False
+        ProgressBar1.Value = 0
         CheckStringInRichTextBox()
-        ChangeControlRichText(info_text_box, "White", "Start Test")
+        ChangeControlRichText(info_text_box, "White", "Start Test" & Environment.NewLine)
         Dim cable_selected = listCable_cbox.Text & ".CSV"
         Dim task = New Task(Sub()
                                 readCSV.ReadCSV(cable_selected, Me)
@@ -123,10 +127,10 @@ Public Class Main
 
         If isStringPresent Then
             'Mostra il pulsante
-            StartTest_btn.Visible = True
+            clear_btn.Visible = True
         Else
             'Nascondi il pulsante
-            StartTest_btn.Visible = False
+            clear_btn.Visible = False
         End If
     End Sub
 
@@ -157,6 +161,29 @@ Public Class Main
         closeForm_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(49, 106, 197)
         closeForm_btn.ForeColor = Color.White
         closeForm_btn.Font = New Font("Segoe UI", 11, FontStyle.Bold)
+    End Sub
+
+    Public Function ChangeCtrlProgressBar(min_value As Integer, max_value As Integer, value As Integer)
+
+        If Me.ProgressBar1.InvokeRequired Then
+            Me.ProgressBar1.BeginInvoke(New Action(Of Integer)(AddressOf UpdateValueProgressBar), value)
+            Me.ProgressBar1.BeginInvoke(New Action(Of Integer)(AddressOf UpdateMinProgressBar), min_value)
+            Me.ProgressBar1.BeginInvoke(New Action(Of Integer)(AddressOf UpdatemaxProgressbar), max_value)
+        Else
+            Me.ProgressBar1.Minimum = min_value
+            Me.ProgressBar1.Maximum = max_value
+            Me.ProgressBar1.Value += value
+        End If
+    End Function
+
+    Private Sub UpdateValueProgressBar(ByVal value As Integer)
+        Me.ProgressBar1.Value += value
+    End Sub
+    Private Sub UpdateMinProgressBar(ByVal min_value As Integer)
+        Me.ProgressBar1.Minimum = min_value
+    End Sub
+    Private Sub UpdatemaxProgressbar(ByVal max_value As Integer)
+        Me.ProgressBar1.Maximum = max_value
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles closeForm_btn.Click

@@ -24,106 +24,25 @@ Partial Class Main
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Main))
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.LInvioHR = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
-        Me.LTestGPS = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.LAccelerometro = New System.Windows.Forms.Label()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.LCalibrazione = New System.Windows.Forms.Label()
         Me.StartTest_btn = New System.Windows.Forms.Button()
         Me.listCable_cbox = New System.Windows.Forms.ComboBox()
         Me.info_text_box = New System.Windows.Forms.RichTextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.closeForm_btn = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.clear_btn = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Panel1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(1460, 153)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(72, 13)
-        Me.Label12.TabIndex = 100
-        Me.Label12.Text = "Test invio HR"
-        '
-        'LInvioHR
-        '
-        Me.LInvioHR.AutoSize = True
-        Me.LInvioHR.Location = New System.Drawing.Point(1598, 153)
-        Me.LInvioHR.Name = "LInvioHR"
-        Me.LInvioHR.Size = New System.Drawing.Size(83, 13)
-        Me.LInvioHR.TabIndex = 102
-        Me.LInvioHR.Text = "Test completato"
-        Me.LInvioHR.Visible = False
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(1460, 182)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(53, 13)
-        Me.Label13.TabIndex = 104
-        Me.Label13.Text = "Test GPS"
-        '
-        'LTestGPS
-        '
-        Me.LTestGPS.AutoSize = True
-        Me.LTestGPS.Location = New System.Drawing.Point(1598, 182)
-        Me.LTestGPS.Name = "LTestGPS"
-        Me.LTestGPS.Size = New System.Drawing.Size(83, 13)
-        Me.LTestGPS.TabIndex = 105
-        Me.LTestGPS.Text = "Test completato"
-        Me.LTestGPS.Visible = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(1460, 209)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(99, 13)
-        Me.Label2.TabIndex = 111
-        Me.Label2.Text = "Test Accelerometro"
-        '
-        'LAccelerometro
-        '
-        Me.LAccelerometro.AutoSize = True
-        Me.LAccelerometro.Location = New System.Drawing.Point(1598, 209)
-        Me.LAccelerometro.Name = "LAccelerometro"
-        Me.LAccelerometro.Size = New System.Drawing.Size(83, 13)
-        Me.LAccelerometro.TabIndex = 112
-        Me.LAccelerometro.Text = "Test completato"
-        Me.LAccelerometro.Visible = False
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(1460, 266)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(64, 13)
-        Me.Label23.TabIndex = 139
-        Me.Label23.Text = "Calibrazione"
-        '
-        'LCalibrazione
-        '
-        Me.LCalibrazione.AutoSize = True
-        Me.LCalibrazione.Location = New System.Drawing.Point(1598, 267)
-        Me.LCalibrazione.Name = "LCalibrazione"
-        Me.LCalibrazione.Size = New System.Drawing.Size(83, 13)
-        Me.LCalibrazione.TabIndex = 140
-        Me.LCalibrazione.Text = "Test completato"
-        Me.LCalibrazione.Visible = False
         '
         'StartTest_btn
         '
         Me.StartTest_btn.BackColor = System.Drawing.Color.White
-        Me.StartTest_btn.Location = New System.Drawing.Point(512, 255)
+        Me.StartTest_btn.Location = New System.Drawing.Point(516, 67)
         Me.StartTest_btn.Name = "StartTest_btn"
         Me.StartTest_btn.Size = New System.Drawing.Size(73, 28)
         Me.StartTest_btn.TabIndex = 141
@@ -145,13 +64,14 @@ Partial Class Main
         '
         'info_text_box
         '
+        Me.info_text_box.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.info_text_box.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(54, Byte), Integer), CType(CType(48, Byte), Integer))
         Me.info_text_box.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.info_text_box.ForeColor = System.Drawing.SystemColors.Window
-        Me.info_text_box.Location = New System.Drawing.Point(0, 33)
+        Me.info_text_box.Location = New System.Drawing.Point(0, 34)
         Me.info_text_box.Name = "info_text_box"
         Me.info_text_box.ReadOnly = True
-        Me.info_text_box.Size = New System.Drawing.Size(265, 257)
+        Me.info_text_box.Size = New System.Drawing.Size(454, 255)
         Me.info_text_box.TabIndex = 143
         Me.info_text_box.Text = ""
         '
@@ -186,36 +106,47 @@ Partial Class Main
         Me.closeForm_btn.TabIndex = 145
         Me.closeForm_btn.UseVisualStyleBackColor = True
         '
-        'Button1
+        'clear_btn
         '
-        Me.Button1.BackColor = System.Drawing.Color.Transparent
-        Me.Button1.Location = New System.Drawing.Point(193, 260)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(58, 23)
-        Me.Button1.TabIndex = 145
-        Me.Button1.Text = "Clear"
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.clear_btn.BackColor = System.Drawing.Color.Transparent
+        Me.clear_btn.Location = New System.Drawing.Point(381, 254)
+        Me.clear_btn.Name = "clear_btn"
+        Me.clear_btn.Size = New System.Drawing.Size(58, 23)
+        Me.clear_btn.TabIndex = 145
+        Me.clear_btn.Text = "Clear"
+        Me.clear_btn.UseVisualStyleBackColor = False
+        Me.clear_btn.Visible = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Location = New System.Drawing.Point(530, 101)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(59, 46)
+        Me.PictureBox2.TabIndex = 146
+        Me.PictureBox2.TabStop = False
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(454, 280)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(140, 10)
+        Me.ProgressBar1.TabIndex = 147
         '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(229, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(591, 289)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(596, 289)
+        Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.clear_btn)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.info_text_box)
         Me.Controls.Add(Me.listCable_cbox)
         Me.Controls.Add(Me.StartTest_btn)
-        Me.Controls.Add(Me.LCalibrazione)
-        Me.Controls.Add(Me.Label23)
-        Me.Controls.Add(Me.LAccelerometro)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.LTestGPS)
-        Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.LInvioHR)
-        Me.Controls.Add(Me.Label12)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
@@ -224,24 +155,18 @@ Partial Class Main
         Me.Text = "CableTester"
         Me.Panel1.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents LInvioHR As System.Windows.Forms.Label
-    Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents LTestGPS As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents LAccelerometro As System.Windows.Forms.Label
-    Friend WithEvents Label23 As System.Windows.Forms.Label
-    Friend WithEvents LCalibrazione As System.Windows.Forms.Label
     Friend WithEvents StartTest_btn As Button
     Friend WithEvents listCable_cbox As ComboBox
     Friend WithEvents info_text_box As RichTextBox
     Friend WithEvents Panel1 As Panel
     Friend WithEvents closeForm_btn As Button
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents clear_btn As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class
