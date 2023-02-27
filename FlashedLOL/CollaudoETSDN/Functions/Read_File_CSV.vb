@@ -84,7 +84,10 @@ Public Class Read_File_CSV
                                 gui.ChangeControlRichText(gui.info_text_box, "White", map_input(i + 1) & Environment.NewLine)
                                 test_success = False
                             Else
-                                gui.ChangeControlRichText(gui.info_text_box, "Red", "Alimentato il pin ", entry.Key.ToString, " Connessione indesiderata sul pin ", map_input(i + 1))
+                                gui.ChangeControlRichText(gui.info_text_box, "Gold", "Unexpected:  ")
+                                gui.ChangeControlRichText(gui.info_text_box, "White", entry.Key.ToString)
+                                gui.ChangeControlRichText(gui.info_text_box, "Orange", "  to  ")
+                                gui.ChangeControlRichText(gui.info_text_box, "White", map_input(i + 1) & Environment.NewLine)
                                 test_success = False
                             End If
                         End If
