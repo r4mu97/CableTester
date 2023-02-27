@@ -66,25 +66,27 @@ Public Class Main
         End If
         Dim all_str = text_output & pin_output & text_input & pin_input
 
-        If clr_str = "White" Then
-            ctrl.SelectionColor = Color.White
-            ctrl.AppendText(all_str)
-        ElseIf clr_str = "Red" Then
-            ctrl.SelectionColor = Color.Red
-            ctrl.AppendText(all_str)
-        ElseIf clr_str = "Green" Then
-            ctrl.SelectionColor = Color.Green
-            ctrl.AppendText(all_str)
-        ElseIf clr_str = "Orange" Then
-            ctrl.SelectionColor = Color.Orange
-            ctrl.AppendText(all_str)
-        ElseIf clr_str = "Blue" Then
-            ctrl.SelectionColor = Color.SteelBlue
-            ctrl.AppendText(all_str)
-        ElseIf clr_str = "Beige" Then
-            ctrl.SelectionColor = Color.LightCyan
-            ctrl.AppendText(all_str)
-        End If
+        Select Case clr_str
+            Case "White"
+                ctrl.SelectionColor = Color.White
+                ctrl.AppendText(all_str)
+            Case "Red"
+                ctrl.SelectionColor = Color.Red
+                ctrl.AppendText(all_str)
+            Case "Green"
+                ctrl.SelectionColor = Color.Green
+                ctrl.AppendText(all_str)
+            Case "Orange"
+                ctrl.SelectionColor = Color.Orange
+                ctrl.AppendText(all_str)
+            Case "Blue"
+                ctrl.SelectionColor = Color.Blue
+                ctrl.AppendText(all_str)
+            Case "Gold"
+                ctrl.SelectionColor = Color.Gold
+                ctrl.AppendText(all_str)
+        End Select
+
         ctrl = Nothing
         text_output = Nothing
         pin_output = Nothing
@@ -96,7 +98,7 @@ Public Class Main
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles StartTest_btn.Click
         StartTest_btn.Enabled = False
         ProgressBar1.Value = 0
-        CheckStringInRichTextBox()
+        info_text_box.Clear()
         ChangeControlRichText(info_text_box, "White", "Start Test" & Environment.NewLine)
         Dim cable_selected = listCable_cbox.Text & ".CSV"
         Dim task = New Task(Sub()
@@ -114,54 +116,25 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub CheckStringInRichTextBox()
-        Dim searchString As String = "Start Test"
-        Dim isStringPresent As Boolean = False
-
-        For Each line As String In info_text_box.Lines
-            If line.Contains(searchString) Then
-                isStringPresent = True
-                Exit For
-            End If
-        Next
-
-        If isStringPresent Then
-            'Mostra il pulsante
-            clear_btn.Visible = True
-        Else
-            'Nascondi il pulsante
-            clear_btn.Visible = False
-        End If
-    End Sub
-
-
-    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs) Handles Panel1.MouseDown
+    Private Sub Panel1_MouseDown(sender As Object, e As MouseEventArgs)
         If e.Button = MouseButtons.Left Then
             isDragging = True
             lastLocation = e.Location
         End If
     End Sub
 
-    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs) Handles Panel1.MouseMove
+    Private Sub Panel1_MouseMove(sender As Object, e As MouseEventArgs)
         If isDragging Then
             Me.Location = New Point(Me.Location.X + (e.X - lastLocation.X), Me.Location.Y + (e.Y - lastLocation.Y))
             Me.Update()
         End If
     End Sub
 
-    Private Sub Panel1_MouseUp(sender As Object, e As MouseEventArgs) Handles Panel1.MouseUp
+    Private Sub Panel1_MouseUp(sender As Object, e As MouseEventArgs)
         isDragging = False
     End Sub
 
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        closeForm_btn.FlatStyle = FlatStyle.Flat
-        closeForm_btn.FlatAppearance.BorderSize = 0
-        closeForm_btn.FlatAppearance.MouseOverBackColor = Color.FromArgb(71, 66, 163)
-        closeForm_btn.FlatAppearance.MouseDownBackColor = Color.FromArgb(49, 106, 197)
-        closeForm_btn.ForeColor = Color.White
-        closeForm_btn.Font = New Font("Segoe UI", 11, FontStyle.Bold)
-    End Sub
 
     Public Function ChangeCtrlProgressBar(min_value As Integer, max_value As Integer, value As Integer)
 
@@ -186,11 +159,11 @@ Public Class Main
         Me.ProgressBar1.Maximum = max_value
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles closeForm_btn.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
         Me.Close()
     End Sub
 
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles clear_btn.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
         info_text_box.Clear()
     End Sub
 
@@ -206,9 +179,6 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub info_text_box_TextChanged(sender As Object, e As EventArgs) Handles info_text_box.TextChanged
-        CheckStringInRichTextBox()
-    End Sub
 End Class
 
 
