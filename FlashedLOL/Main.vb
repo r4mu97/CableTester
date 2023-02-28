@@ -26,7 +26,6 @@ Public Class Main
         Do
             can_var.InitCanOpen()
         Loop While Not can_var.is_Inizialized()
-
         Dim task = New Task(Sub()
                                 ReciveVar_form_PLC.GetIntance.ScanParseMsg()
                             End Sub)
@@ -64,8 +63,8 @@ Public Class Main
 
             Return
         End If
-        Dim all_str = text_output & pin_output & text_input & pin_input
 
+        Dim all_str = text_output & pin_output & text_input & pin_input
         Select Case clr_str
             Case "White"
                 ctrl.SelectionColor = Color.White
@@ -89,7 +88,7 @@ Public Class Main
                 ctrl.SelectionColor = Color.Tomato
                 ctrl.AppendText(all_str)
         End Select
-
+        ChangeSizeTextRich()
         ctrl = Nothing
         text_output = Nothing
         pin_output = Nothing
@@ -111,11 +110,26 @@ Public Class Main
 
     End Sub
 
+    Public Function ChangeSizeTextRich()
+        Dim zoom = ToolStripDropDownButton1.SelectedIndex
+        If Not zoom = -1 Then
+            If Not zoom = 0 Then
+                If info_text_box.ZoomFactor <> zoom Then
+                    info_text_box.ZoomFactor = zoom
+                End If
+            Else
+                info_text_box.ZoomFactor = 0.7
+            End If
+        End If
+
+    End Function
+
     Public Sub ChangeStatebutton()
         If Me.StartTest_btn.InvokeRequired Then
             Me.StartTest_btn.Invoke(Sub() ChangeStatebutton())
         Else
             StartTest_btn.Enabled = True
+            StartTest_btn.Focus()
         End If
     End Sub
 
@@ -181,6 +195,21 @@ Public Class Main
             End If
         End If
     End Sub
+
+    Private Sub ToolStripDropDownButton1_SelectedIndexChanged(sender As Object, e As EventArgs)
+        ChangeSizeTextRich()
+    End Sub
+
+    Private Sub ToolStripDropDownButton1_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles ToolStripDropDownButton1.SelectedIndexChanged
+        ChangeSizeTextRich()
+    End Sub
+
+
+
+    'Private Sub ToolStripMenuItem1_DropDown(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.DropDown
+    '    ToolStripMenuItem1.Items.Clear()
+    '    ToolStripMenuItem1.Items.AddRange(New String() {"", "8", "10", "12", "14", "16", "18", "20", "24", "30", "35", "40"})
+    'End Sub
 
 End Class
 
