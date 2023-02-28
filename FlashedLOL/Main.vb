@@ -85,6 +85,9 @@ Public Class Main
             Case "Gold"
                 ctrl.SelectionColor = Color.Gold
                 ctrl.AppendText(all_str)
+            Case "Tomato"
+                ctrl.SelectionColor = Color.Tomato
+                ctrl.AppendText(all_str)
         End Select
 
         ctrl = Nothing
