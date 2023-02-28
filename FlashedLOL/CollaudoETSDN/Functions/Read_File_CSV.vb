@@ -78,14 +78,14 @@ Public Class Read_File_CSV
                     Else
                         If map_input.ContainsKey(i + 1) Then
                             If connections(i) = True Then
-                                gui.ChangeControlRichText(gui.info_text_box, "Gold", "Missing:  ")
-                                gui.ChangeControlRichText(gui.info_text_box, "White", entry.Key.ToString)
+                                gui.ChangeControlRichText(gui.info_text_box, "Gold", "Missing:          ")
+                                gui.ChangeControlRichText(gui.info_text_box, "White", entry.Value.ToString)
                                 gui.ChangeControlRichText(gui.info_text_box, "Orange", "  to  ")
                                 gui.ChangeControlRichText(gui.info_text_box, "White", map_input(i + 1) & Environment.NewLine)
                                 test_success = False
                             Else
-                                gui.ChangeControlRichText(gui.info_text_box, "Gold", "Unexpected:  ")
-                                gui.ChangeControlRichText(gui.info_text_box, "White", entry.Key.ToString)
+                                gui.ChangeControlRichText(gui.info_text_box, "Tomato", "Unexpected:  ")
+                                gui.ChangeControlRichText(gui.info_text_box, "White", entry.Value.ToString)
                                 gui.ChangeControlRichText(gui.info_text_box, "Orange", "  to  ")
                                 gui.ChangeControlRichText(gui.info_text_box, "White", map_input(i + 1) & Environment.NewLine)
                                 test_success = False
@@ -93,7 +93,7 @@ Public Class Read_File_CSV
                         End If
                     End If
                 Next
-                gui.ChangeCtrlProgressBar(0, MAX_INPUTS, 1)
+                gui.ChangeCtrlProgressBar(0, map_output.Count, 1)
             Next
             If test_success Then
                 gui.ChangeControlRichText(gui.info_text_box, "Green", "End Test Success")
