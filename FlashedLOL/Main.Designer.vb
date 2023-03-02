@@ -80,11 +80,11 @@ Partial Class Main
         'ToolStrip1
         '
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1})
-        Me.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Table
+        Me.ToolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip1.Size = New System.Drawing.Size(605, 42)
+        Me.ToolStrip1.Size = New System.Drawing.Size(605, 25)
         Me.ToolStrip1.TabIndex = 150
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -92,7 +92,7 @@ Partial Class Main
         '
         Me.ToolStripDropDownButton1.Items.AddRange(New Object() {"20 %", "50 % ", "70 %", "80 %", "100 %", "150 %", "200 %", "250 %", "300 %", "400 %"})
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
-        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(75, 23)
+        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(75, 25)
         Me.ToolStripDropDownButton1.Text = "Modifica"
         '
         'Main
